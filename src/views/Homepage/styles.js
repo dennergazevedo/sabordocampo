@@ -156,3 +156,15 @@ export const ButtonPlan= styled.button`
         font-size: 16px;
     }
 `;
+
+export const ProductList = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    flex-wrap: wrap;
+    height: auto;
+    margin-top: 150px;
+    margin-bottom: 50px;
+`;

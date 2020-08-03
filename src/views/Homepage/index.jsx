@@ -15,10 +15,12 @@ import {
   AboutPlan,
   ImgPlan,
   ButtonPlan,
+  ProductList
 } from './styles';
 
 // COMPONENTS
 import Navbar from '../../components/Navbar';
+import Product from '../../components/Product';
 
 // ASSETS
 import fixedslider from '../../assets/img/fixedslider.png';
@@ -66,6 +68,10 @@ function Homepage() {
             ASSINAR AGORA
           </ButtonPlan>
         </AboutPlan>
+
+        <ProductList>
+          <Product />
+        </ProductList>
     </Container>
   );
 }
