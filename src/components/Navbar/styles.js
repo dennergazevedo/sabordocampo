@@ -68,9 +68,3 @@ export const ItemText = styled.div`
         transition: 0.5s all;
     }
 `;
-
-export const DividerItem = styled.hr`
-    display: flex;
-    height: 30px;
-    border-left: 1px solid #0003;
-`;

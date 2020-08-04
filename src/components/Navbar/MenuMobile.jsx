@@ -18,7 +18,7 @@ import {
 // ICONS
 import {
     FaBars,
-    FaShoppingCart,
+    FaUser,
     FaAngleRight
 } from 'react-icons/fa';
 
@@ -73,7 +73,7 @@ function MenuMobile() {
           }
           <Logomarca src={logo} alt="LOGOMARCA"/>
           <Item>
-            <FaShoppingCart />
+            <FaUser />
           </Item>
       </Container>
   );

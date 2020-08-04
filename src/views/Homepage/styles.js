@@ -148,7 +148,6 @@ export const ButtonPlan= styled.button`
     font-size: 20px;
     font-weight: 600;
     transition: 0.5s all;
-    z-index: -1;
 
     &:hover{
         transition: 0.5s all;

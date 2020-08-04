@@ -8,7 +8,6 @@ import {
     Menu,
     ItemIcon,
     ItemText,
-    DividerItem
 } from './styles';
 
 // ASSETS
@@ -16,7 +15,6 @@ import logo from '../../assets/img/logomarca.png'
 
 // ICONS
 import {
-    FaShoppingCart,
     FaUser,
 } from 'react-icons/fa';
 
@@ -44,10 +42,6 @@ function Navbar() {
                 </ItemText>
                 <ItemIcon>
                     <FaUser/>
-                </ItemIcon>
-                <DividerItem/>
-                <ItemIcon>
-                    <FaShoppingCart/>
                 </ItemIcon>
             </Menu>
             :
