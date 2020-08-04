@@ -52,43 +52,11 @@ export const MenuOpen = styled(motion.div)`
     transition: 0.5s all;
 `;
 
-export const SearchBar = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    margin-top: 40px;
-`;
-
 export const Divider = styled.hr`
     display: flex;
     width: 80%;
     border-bottom: 1px solid #0003;
     margin: 10px;
-`;
-
-export const SearchInput = styled.input`
-    display: flex;
-    padding: 0px 0px 0px 20px;
-    color: #909090;
-    border-radius: 5px 0px 0px 5px;
-    background-color: #0001;
-    height: 30px;
-    width: 180px;
-    font-size: 10px;
-`;
-
-export const SearchButton = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #00713C;
-    border: none;
-    border-radius: 0px 5px 5px 0px;
-    color: #FFF;
-    height: 30px;
-    width: 30px;
 `;
 
 export const Exit = styled(motion.div)`

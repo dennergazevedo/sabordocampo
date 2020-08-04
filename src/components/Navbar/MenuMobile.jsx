@@ -8,9 +8,6 @@ import {
     MenuToggle,
     Exit,
     Logomarca,
-    SearchBar,
-    SearchInput,
-    SearchButton,
     Divider,
     ItemMenu,
     Superior,
@@ -22,7 +19,6 @@ import {
 import {
     FaBars,
     FaShoppingCart,
-    FaSearch,
     FaAngleRight
 } from 'react-icons/fa';
 
@@ -45,12 +41,7 @@ function MenuMobile() {
                 <MenuToggle>
                     <MenuOpen initial={{opacity: 0}} animate={{scale: 1.1, opacity: 1}} transition={{ duration: 0.5 }}>
                         <Superior>
-                            <SearchBar>
-                                <SearchInput placeholder="Buscar..."/>
-                                <SearchButton>
-                                    <FaSearch/>
-                                </SearchButton>
-                            </SearchBar>
+                            <Logomarca src={logo} alt="LOGOMARCA" style={{marginTop: '50px'}}/>
                             <Divider />
                             <ItemMenu>
                                 <FaAngleRight style={{marginRight: '10px'}}/>

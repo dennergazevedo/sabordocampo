@@ -6,7 +6,8 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
 `;
 
 export const LoginContainer = styled.div`
@@ -19,7 +20,7 @@ export const LoginContainer = styled.div`
     border-radius: 5px;
     box-shadow: 1px 1px 10px 1px #0003;
     width: 60vw;
-    height: 50vh;
+    height: 100%;
     min-width: 350px;
     min-height: 450px;
 
@@ -49,6 +50,7 @@ export const SignUp = styled.div`
     justify-content: flex-start;
     align-items: center;
     width: 29vw;
+    height: auto;
     min-width: 320px;
     font-size: 14px;
     padding: 10px;
@@ -93,9 +95,15 @@ export const DividerOr = styled.hr`
 
 export const Logomarca = styled.img`
     display: flex;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     width: 200px;
     height: auto;
+    cursor: pointer;
+
+    @media only screen and (max-width: 600px){
+        margin-bottom: 0px;
+        margin: 20px;
+    }
 `;
 
 export const Title = styled.span`
@@ -154,6 +162,7 @@ export const ForgotPass = styled.span`
     align-self: flex-start;
     color: #0009;
     transition: 0.5s all;
+    flex-direction: row;
 
     &:hover{
         transition: 0.5s all;
@@ -190,4 +199,44 @@ export const FacebookButton = styled.button`
     align-items: center;
     font-size: 14px;
     margin: 10px;
+`;
+
+export const LinkTermos = styled.span`
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.5s all;
+
+    &:hover{
+        transition: 0.5s all;
+        color: #00713C;
+    }
+`;
+
+export const Termos = styled.span`
+    display: flex;
+    margin-top: 10px;
+    align-self: flex-start;
+    color: #0009;
+    transition: 0.5s all;
+    flex-direction: row;
+    font-size: 12px;
+`;
+
+export const Back = styled.span`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #0009;
+    font-size: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.5s all;
+    margin-bottom: 50px;
+
+    &:hover{
+        transition: 0.5s all;
+        color: #000;
+    }
 `;
