@@ -7,6 +7,7 @@ import Route from './Route.js';
 
 // COMPONENTES
 import Homepage from '../views/Homepage';
+import Login from '../views/Login';
 
 export default function Routes(){
 
@@ -14,6 +15,7 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Homepage}/>
+                <Route path="/login" exact component={Login}/>
             </Switch>
         </BrowserRouter>
     );

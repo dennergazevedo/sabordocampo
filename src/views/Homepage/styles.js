@@ -171,6 +171,6 @@ export const ProductList = styled.div`
     width: 100vw;
     flex-wrap: wrap;
     height: auto;
-    margin-top: 150px;
+    margin-top: 50px;
     margin-bottom: 50px;
 `;

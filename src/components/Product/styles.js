@@ -14,6 +14,14 @@ export const Container = styled.div`
     &:hover{
         box-shadow: 1px 1px 10px 1px #0003;
     }
+
+    @media only screen and (max-width: 500px){
+        justify-content: center;
+    }
+
+    @media only screen and (max-width: 380px){
+        width: 220px;
+    }
 `;
 
 export const ImagemProduct = styled.img`
@@ -45,6 +53,12 @@ export const Text = styled.span`
     font-size: 12px;
     color: #00713C;
     line-height: 20px;
+    
+    @media only screen and (max-width: 680px){
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
 `;
 
 export const Title = styled.span`

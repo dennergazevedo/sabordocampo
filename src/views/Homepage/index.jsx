@@ -63,12 +63,17 @@ function Homepage() {
           </TextSlider>
         </FixedSlider>
 
-        <AboutPlan>
-          <ImgPlan src={imgplan} alt="IMAGEMPLANO" />
-          <ButtonPlan>
-            ASSINAR AGORA
-          </ButtonPlan>
-        </AboutPlan>
+        {
+          screen.width > 700 && window.innerWidth > 700 ?
+            <AboutPlan>
+              <ImgPlan src={imgplan} alt="IMAGEMPLANO" />
+              <ButtonPlan>
+                ASSINAR AGORA
+              </ButtonPlan>
+            </AboutPlan>
+            :
+            null
+        }
 
         <ProductList>
           <Product />

@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: row;
     justify-content:space-between;
     align-items: center;
     position: fixed;
     top: 0;
     width: 100vw;
-    max-width: 100vw;
     height: 100px;
     background-color: #FFF;
     box-shadow: 1px 1px 10px 1px #0003;
-    flex-direction: row;
+    overflow-y: hidden;
 `;
 
 export const Logomarca = styled.img`

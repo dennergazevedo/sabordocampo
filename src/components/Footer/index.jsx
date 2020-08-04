@@ -2,7 +2,7 @@
 import React from 'react';
 
 // STYLED COMPONENTS
-import { 
+import {
     Container,
     Left,
     Logo,
@@ -14,7 +14,9 @@ import {
     Sac,
     SacLink,
     TextLink,
-    DividerLink
+    DividerLink,
+    Main,
+    Rodape,
 } from './styles';
 
 // ASSETS
@@ -29,63 +31,73 @@ import {
 } from 'react-icons/ai';
 
 function Footer() {
-  return (
-    <Container>
-        <Left>
-            <Logo src={logofooter} alt="LOGOMARCA" />
-            <Contato>
-                <Phone>
-                    <AiOutlineWhatsApp style={{fontSize:'16px', marginRight: '5px'}}/>
-                    (31) 9 9988-8949
-                </Phone>
-                <Social>
-                    <AiFillFacebook style={{cursor: 'pointer', margin: '10px'}}/>
-                    <AiOutlineInstagram style={{cursor: 'pointer', margin: '10px'}}/>
-                </Social>
-            </Contato>
-        </Left>
+    return (
+        <Main>
+            <Container>
+                <Left>
+                    <Logo src={logofooter} alt="LOGOMARCA" />
+                    <Contato>
+                        <Phone>
+                            <AiOutlineWhatsApp style={{ fontSize: '16px', marginRight: '5px' }} />
+                            (31) 9 9988-8949
+                        </Phone>
+                        <Social>
+                            <AiFillFacebook style={{ cursor: 'pointer', margin: '10px' }} />
+                            <AiOutlineInstagram style={{ cursor: 'pointer', margin: '10px' }} />
+                        </Social>
+                    </Contato>
+                </Left>
 
-        {
-            screen.width > 680 && window.innerWidth > 680 ?
-            <Divider />
-            :
-            null
-        }
-        
-        <Center>
-            <Sac>
-                <AiFillPhone style={{ fontSize:'20px', marginRight: '5px' }} />
-                Central de Ajuda ao Consumidor
-            </Sac>
+                {
+                    screen.width > 680 && window.innerWidth > 680 ?
+                        <Divider />
+                        :
+                        null
+                }
 
-            <SacLink>
-                <TextLink>
-                    Dúvidas frequentes
-                </TextLink>
+                <Center>
+                    <Sac>
+                        <AiFillPhone style={{ fontSize: '20px', marginRight: '5px' }} />
+                        Central de Ajuda ao Consumidor
+                    </Sac>
 
-                <DividerLink/>
+                    <SacLink>
+                        <TextLink>
+                            Dúvidas frequentes
+                        </TextLink>
 
-                <TextLink>
-                    Termos de uso
-                </TextLink>
+                        <DividerLink />
 
-                <DividerLink/>
+                        <TextLink>
+                            Termos de uso
+                        </TextLink>
 
-                <TextLink>
-                    Segurança e privacidade
-                </TextLink>
+                        <DividerLink />
 
-                <DividerLink/>
+                        <TextLink>
+                            Segurança e privacidade
+                        </TextLink>
 
-                <TextLink>
-                    Trocas e cancelamento
-                </TextLink>
+                        <DividerLink />
 
-                <DividerLink/>
-            </SacLink>
-        </Center>
-    </Container>
-  );
+                        <TextLink>
+                            Trocas e cancelamento
+                        </TextLink>
+
+                        <DividerLink />
+                    </SacLink>
+                </Center>
+            </Container>
+            <Rodape>
+                <span>
+                    São Pedro dos Ferros, MG - Córrego Santo Antônio s/n
+                </span>
+                <span style={{marginRight: '30px'}}>
+                    Sabor do Campo &copy; {new Date().getFullYear()} - Todos os direitos reservados
+                </span>
+            </Rodape>
+        </Main>
+    );
 }
 
 export default Footer;

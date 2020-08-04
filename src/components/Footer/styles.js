@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+`;
+
 export const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -101,4 +107,20 @@ export const DividerLink = styled.hr`
     border-bottom: 0.5px solid #FFF5;
     margin-top: 5px;
     margin-bottom: 15px;
+`;
+
+export const Rodape = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100vw;
+    background-color: #333;
+    padding: 20px;
+
+    span{
+        font-size: 12px;
+        color: #FFF8;
+    }
 `;
