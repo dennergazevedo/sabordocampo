@@ -27,7 +27,7 @@ export const Item = styled.div`
 
 export const MenuToggle = styled.div`
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     background-color: #0003;

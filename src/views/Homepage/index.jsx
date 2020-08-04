@@ -2,7 +2,7 @@
 import React from 'react';
 
 // STYLED COMPONENTS
-import { 
+import {
   Container,
   FixedSlider,
   Imagem,
@@ -20,6 +20,7 @@ import {
 
 // COMPONENTS
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import Product from '../../components/Product';
 
 // ASSETS
@@ -28,15 +29,15 @@ import imgplan from '../../assets/img/backgroundhome.png';
 
 function Homepage() {
   return (
-    <Container>
-        <Navbar/>
+      <Container>
+        <Navbar />
 
         <FixedSlider>
           {
             screen.width > 700 && window.innerWidth > 700 ?
-            <Imagem src={fixedslider}/>
-            :
-            null
+              <Imagem src={fixedslider} />
+              :
+              null
           }
           <TextSlider>
             <Subtitle>
@@ -63,7 +64,7 @@ function Homepage() {
         </FixedSlider>
 
         <AboutPlan>
-          <ImgPlan src={imgplan} alt="IMAGEMPLANO"/>
+          <ImgPlan src={imgplan} alt="IMAGEMPLANO" />
           <ButtonPlan>
             ASSINAR AGORA
           </ButtonPlan>
@@ -72,7 +73,10 @@ function Homepage() {
         <ProductList>
           <Product />
         </ProductList>
-    </Container>
+
+        <Footer />
+        
+      </Container>
   );
 }
 

@@ -4,6 +4,9 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     max-width: 100vw;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const FixedSlider = styled.div`
@@ -12,6 +15,7 @@ export const FixedSlider = styled.div`
     justify-content: center;
     align-items: center;
     width: 100vw;
+    max-width: 100vw;
     height: auto;
     margin-top: 100px;
     flex-wrap: wrap;
@@ -121,38 +125,40 @@ export const AboutPlan = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: auto;
+    max-width: 100vw;
+    max-height: 120vh;
     flex-direction: column;
-    margin-top: 50px;
 `;
 
 export const ImgPlan = styled.img`
     display: flex;
+    max-width: 100vw;
     width: 100vw;
     height: auto;
 `;
 
 export const ButtonPlan= styled.button`
     display: flex;
+    position: absolute;
+    margin-top: -80px;
     padding: 20px 50px 20px 50px;
     border-radius: 100px;
-    background-color: #FFF;
-    color: #00713C;
+    background-color: #00713C;
+    color: #FFF;
     font-size: 20px;
     font-weight: 600;
-    margin-top: -150px;
     transition: 0.5s all;
+    z-index: -1;
 
     &:hover{
         transition: 0.5s all;
-        background-color: #00713C;
+        box-shadow: 1px 1px 10px 1px #00713C;
         color: #FFF;
     }
 
     @media only screen and (max-width: 920px){
         padding: 15px 30px 15px 30px;
-        margin-top: -70px;
+        margin-top: -20px;
         font-size: 16px;
     }
 `;

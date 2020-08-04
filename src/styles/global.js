@@ -8,6 +8,8 @@ export default createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     text-decoration: none !important;
     outline: 0 !important;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   *, button, input {
