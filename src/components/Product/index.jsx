@@ -17,6 +17,9 @@ import {
 // ASSETS
 import basket from '../../assets/img/basket.png';
 
+// SERVICES
+import { Link } from 'react-router-dom';
+
 function Product() {
   return (
     <Container>
@@ -34,11 +37,15 @@ function Product() {
             <Subtitle>(Dúzia)</Subtitle>
         </Title>
           Ovos de galinhas livres de gaiola com acesso ao campo.
-          <Button1>
-          Assinar Agora
-          </Button1>
-        <Button2>
-          Comprar Agora
+          
+          <Link to="/assinatura/1">
+            <Button1>
+              Assinar Agora
+            </Button1>
+          </Link>
+          
+          <Button2>
+            Comprar Agora
           </Button2>
       </Text>
 
@@ -55,11 +62,15 @@ function Product() {
             <Subtitle>(Pente)</Subtitle>
         </Title>
           Ovos de galinhas livres de gaiola com acesso ao campo.
-          <Button1>
-          Assinar Agora
-          </Button1>
-        <Button2>
-          Comprar Agora
+          
+          <Link to="/assinatura/2">
+            <Button1>
+              Assinar Agora
+            </Button1>
+          </Link>
+
+          <Button2>
+            Comprar Agora
           </Button2>
       </Text>
 
@@ -76,11 +87,15 @@ function Product() {
             <Subtitle>(Caixa)</Subtitle>
         </Title>
           Ovos de galinhas livres de gaiola com acesso ao campo.
-          <Button1>
-          Assinar Agora
-          </Button1>
-        <Button2>
-          Comprar Agora
+          
+          <Link to="/assinatura/3">
+            <Button1>
+              Assinar Agora
+            </Button1>
+          </Link>
+
+          <Button2>
+            Comprar Agora
           </Button2>
       </Text>
 

@@ -18,8 +18,7 @@ import {
     Quantidade,
     ButtonQnt,
     InputQnt,
-    Checkout,
-    Buy
+    Checkout
 } from './styles';
 
 // COMPONENTS
@@ -33,7 +32,7 @@ import product from '../../assets/products/01.png';
 // SERVICES
 import { useParams } from 'react-router-dom';
 
-function Assign() {
+function Buy() {
 
     const params = useParams();
 
@@ -119,16 +118,7 @@ function Assign() {
                         </Subtitle>
 
                         <Form>
-
-                            <Label>
-                                Peridicidade da Entrega:
-                            </Label>
-                            <Select>
-                                <option value={1}>Semanal</option>
-                                <option value={2}>Quinzenal</option>
-                                <option value={2}>Mensal</option>
-                            </Select>
-
+                            
                             <Label>
                                 Cidade da Entrega:
                             </Label>
@@ -222,11 +212,8 @@ function Assign() {
                     </Quantidade>
 
                     <Checkout>
-                        ASSINAR AGORA
+                        COMPRAR AGORA
                     </Checkout>
-                    <Buy>
-                        COMPRAR UMA VEZ
-                    </Buy>
 
                 </Options2>
 
@@ -238,4 +225,4 @@ function Assign() {
   );
 }
 
-export default Assign;
+export default Buy;

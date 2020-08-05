@@ -25,6 +25,9 @@ import {
 // ASSETS
 import logo from '../../assets/img/logomarca.png';
 
+// SERVICES
+import { Link } from 'react-router-dom';
+ 
 function MenuMobile() {
 
     const [menu, setMenu] = useState(false);
@@ -43,14 +46,21 @@ function MenuMobile() {
                         <Superior>
                             <Logomarca src={logo} alt="LOGOMARCA" style={{marginTop: '50px'}}/>
                             <Divider />
-                            <ItemMenu>
-                                <FaAngleRight style={{marginRight: '10px'}}/>
-                                Clube de Assinatura
-                            </ItemMenu>
-                            <ItemMenu>
-                                <FaAngleRight style={{marginRight: '10px'}}/>
-                                Produtos
-                            </ItemMenu>
+                            
+                            <Link to="/">
+                                <ItemMenu>
+                                    <FaAngleRight style={{marginRight: '10px'}}/>
+                                    Clube de Assinatura
+                                </ItemMenu>
+                            </Link>
+
+                            <Link to="/produtos">
+                                <ItemMenu>
+                                    <FaAngleRight style={{marginRight: '10px'}}/>
+                                    Produtos
+                                </ItemMenu>
+                            </Link>
+                            
                             <ItemMenu>
                                 <FaAngleRight style={{marginRight: '10px'}}/>
                                 Quem somos

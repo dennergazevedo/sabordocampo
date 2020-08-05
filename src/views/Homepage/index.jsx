@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // STYLED COMPONENTS
 import {
@@ -28,9 +28,16 @@ import fixedslider from '../../assets/img/fixedslider.png';
 import imgplan from '../../assets/img/backgroundhome.png';
 
 function Homepage() {
+
+  useEffect(()=>{
+    window.location.href="#index";
+  }, [])
+
   return (
       <Container>
         <Navbar />
+
+        <div id="index" />
 
         <FixedSlider>
           {
@@ -53,10 +60,10 @@ function Homepage() {
               Tenha sempre ovos frescos, com qualidade, sem sair de casa.
             </Text>
             <ButtonsSlider>
-              <ButtonNav>
+              <ButtonNav href="#assign">
                 Eu quero
               </ButtonNav>
-              <ButtonNav>
+              <ButtonNav href="#about">
                 Entenda como funciona
               </ButtonNav>
             </ButtonsSlider>
@@ -65,9 +72,9 @@ function Homepage() {
 
         {
           screen.width > 700 && window.innerWidth > 700 ?
-            <AboutPlan>
+            <AboutPlan id="about">
               <ImgPlan src={imgplan} alt="IMAGEMPLANO" />
-              <ButtonPlan>
+              <ButtonPlan href="#assign">
                 ASSINAR AGORA
               </ButtonPlan>
             </AboutPlan>
@@ -75,7 +82,7 @@ function Homepage() {
             null
         }
 
-        <ProductList>
+        <ProductList id="assign">
           <Product />
         </ProductList>
 

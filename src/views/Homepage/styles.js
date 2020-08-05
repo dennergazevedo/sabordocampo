@@ -101,7 +101,7 @@ export const ButtonsSlider = styled.div`
     }
 `;
 
-export const ButtonNav = styled.button`
+export const ButtonNav = styled.a`
     display: flex;
     padding: 5px 20px 5px 20px;
     border-radius: 100px;
@@ -137,7 +137,7 @@ export const ImgPlan = styled.img`
     height: auto;
 `;
 
-export const ButtonPlan= styled.button`
+export const ButtonPlan= styled.a`
     display: flex;
     position: absolute;
     margin-top: -80px;

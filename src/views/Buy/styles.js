@@ -196,21 +196,3 @@ export const Checkout = styled.button`
         box-shadow: 1px 1px 5px 1px #00713C;
     }
 `;
-
-export const Buy = styled.button`
-    display: flex;
-    color: #FFF;
-    background-color: #4DA250;
-    border-radius: 100px;
-    padding: 10px;
-    width: 250px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    transition: 0.5s all;
-
-    &:hover{
-        transition: 0.5s all;
-        box-shadow: 1px 1px 5px 1px #4DA250;
-    }
-`;

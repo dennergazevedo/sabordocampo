@@ -12,6 +12,7 @@ export const Container = styled.div`
     background-color: #FFF;
     box-shadow: 1px 1px 10px 1px #0003;
     flex-direction: row;
+    z-index: 10;
 `;
 
 export const Item = styled.div`
@@ -34,6 +35,7 @@ export const MenuToggle = styled.div`
     width: 100vw;
     height: 100vh;
     transition: 0.5s all;
+    z-index: 11;
 `;
 
 export const MenuOpen = styled(motion.div)`

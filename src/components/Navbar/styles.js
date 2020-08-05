@@ -12,6 +12,7 @@ export const Container = styled.div`
     background-color: #FFF;
     box-shadow: 1px 1px 10px 1px #0003;
     overflow-y: hidden;
+    z-index: 10;
 `;
 
 export const Logomarca = styled.img`

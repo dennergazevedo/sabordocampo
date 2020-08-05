@@ -21,6 +21,9 @@ import {
 // COMPONENTS
 import MenuMobile from './MenuMobile';
 
+// SERVICES
+import { Link } from 'react-router-dom';
+
 function Navbar() {
   return (
     <Container>
@@ -28,21 +31,30 @@ function Navbar() {
         {
             screen.width > 970 && window.innerWidth > 970 ?
             <Menu>
-                <ItemText>
-                    Clube de Assinatura
-                </ItemText>
-                <ItemText>
-                    Produtos
-                </ItemText>
+                <Link to="/">
+                    <ItemText>
+                        Clube de Assinatura
+                    </ItemText>
+                </Link>
+
+                <Link to="/produtos">
+                    <ItemText>
+                        Produtos
+                    </ItemText>
+                </Link>
                 <ItemText>
                     Quem somos
                 </ItemText>
                 <ItemText>
                     Contato
                 </ItemText>
-                <ItemIcon>
-                    <FaUser/>
-                </ItemIcon>
+
+                <Link to="/login">
+                    <ItemIcon>
+                        <FaUser/>
+                    </ItemIcon>
+                </Link>
+                
             </Menu>
             :
             <MenuMobile/>

@@ -95,6 +95,7 @@ export const Button1 = styled.button`
     font-size: 12px;
     margin-top: 10px;
     transition: 0.5s all;
+    width: 150px;
 
     &:hover{
         transition: 0.5s all;
@@ -112,6 +113,7 @@ export const Button2 = styled.button`
     font-size: 12px;
     margin-top: 10px;
     transition: 0.5s all;
+    width: 150px;
 
     &:hover{
         transition: 0.5s all;
