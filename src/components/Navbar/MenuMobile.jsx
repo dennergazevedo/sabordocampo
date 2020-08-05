@@ -27,12 +27,24 @@ import logo from '../../assets/img/logomarca.png';
 
 // SERVICES
 import { Link } from 'react-router-dom';
- 
+
+// STORE
+import { store } from '../../store';
+import { useDispatch } from 'react-redux';
+import { signOut } from '../../store/modules/auth/actions';
+
 function MenuMobile() {
+
+    const { signed } = store.getState().auth;
+    const dispatch = useDispatch();
 
     const [menu, setMenu] = useState(false);
 
     const toggle = () => setMenu(!menu);
+
+    const handleSignOut = () => {
+        dispatch(signOut());
+    }
 
   return (
       <Container>
@@ -71,9 +83,18 @@ function MenuMobile() {
                             </ItemMenu>
                         </Superior>
                         <Inferior>
-                            <SignIn>
-                                Entrar
-                            </SignIn>
+                            {
+                                signed ?
+                                <SignIn onClick={handleSignOut}>
+                                    Sair
+                                </SignIn> 
+                                :
+                                <Link to="/login">
+                                    <SignIn>
+                                        Entrar
+                                    </SignIn>
+                                </Link>
+                            }
                         </Inferior>
                     </MenuOpen>
                     <Exit initial={{opacity: 0}} animate={{opacity: 1}} onClick={toggle}/>
@@ -82,9 +103,11 @@ function MenuMobile() {
                 null
           }
           <Logomarca src={logo} alt="LOGOMARCA"/>
-          <Item>
-            <FaUser />
-          </Item>
+          <Link to="/perfil">
+            <Item>
+                <FaUser />
+            </Item>
+          </Link>
       </Container>
   );
 }

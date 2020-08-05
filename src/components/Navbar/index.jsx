@@ -49,7 +49,7 @@ function Navbar() {
                     Contato
                 </ItemText>
 
-                <Link to="/login">
+                <Link to="/perfil">
                     <ItemIcon>
                         <FaUser/>
                     </ItemIcon>

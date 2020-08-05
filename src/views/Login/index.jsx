@@ -1,8 +1,9 @@
 /* eslint-disable no-restricted-globals */
-import React from 'react';
+import React, { useState } from 'react';
 
 // SERVICES
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // STYLED COMPONENTS
 import { 
@@ -36,7 +37,31 @@ import {
     AiOutlineArrowLeft
 } from 'react-icons/ai';
 
+// REDUX
+import { useDispatch, useSelector } from 'react-redux';
+import { signInRequest } from '../../store/modules/auth/actions';
+
+// VALIDATOR
+import validator from 'validator';
+
 function Login() {
+
+    const dispatch = useDispatch();
+    const loading = useSelector(state => state.auth.loading);
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    function handleLogin(){
+        window.event.preventDefault()
+        if (validator.isEmail(email)) {
+          dispatch(signInRequest(email, password));
+          setTimeout(function(){window.location.reload()}, 3000);
+        } else {
+          toast.error('Digite um e-mail válido.', { position: 'bottom-center'} );
+        }
+    }
+
   return (
       <Container>
           <Logomarca src={logo} alt="LOGOMARCA"/>
@@ -57,23 +82,28 @@ function Login() {
                         <DividerOr/>
                     </ContainerDivider>
 
-                    <FormLogin>
+                    <FormLogin onSubmit={handleLogin}>
                         <LabelLogin for="email">
                             E-mail*
                         </LabelLogin>
-                        <InputEmail id="email" type="email" placeholder="exemplo@email.com"/>
+                        <InputEmail value={email} onChange={e => setEmail(e.target.value)} id="email" type="email" placeholder="exemplo@email.com"/>
 
                         <LabelLogin for="password">
                             Senha*
                         </LabelLogin>
-                        <InputEmail id="password" type="password" placeholder="********"/>
+                        <InputEmail value={password} onChange={e => setPassword(e.target.value)} id="password" type="password" placeholder="********"/>
 
                         <ForgotPass>
                             Esqueceu sua senha?
                         </ForgotPass>
 
                         <ButtonSignIn>
-                            Entrar
+                            {
+                                loading?
+                                "Carregando"
+                                :
+                                "Entrar"
+                            }
                         </ButtonSignIn>
                     </FormLogin>
                 </SignIn>

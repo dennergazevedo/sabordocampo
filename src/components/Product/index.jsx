@@ -44,9 +44,12 @@ function Product() {
             </Button1>
           </Link>
           
-          <Button2>
-            Comprar Agora
-          </Button2>
+          <Link to="/comprar/1">
+            <Button2>
+              Comprar Agora
+            </Button2>
+          </Link>
+          
       </Text>
 
       {
@@ -69,9 +72,11 @@ function Product() {
             </Button1>
           </Link>
 
-          <Button2>
-            Comprar Agora
-          </Button2>
+          <Link to="/comprar/2">
+            <Button2>
+              Comprar Agora
+            </Button2>
+          </Link>
       </Text>
 
       {
@@ -94,9 +99,11 @@ function Product() {
             </Button1>
           </Link>
 
-          <Button2>
-            Comprar Agora
-          </Button2>
+          <Link to="/comprar/3">
+            <Button2>
+              Comprar Agora
+            </Button2>
+          </Link>
       </Text>
 
       {
