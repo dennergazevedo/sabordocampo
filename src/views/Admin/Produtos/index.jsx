@@ -28,7 +28,7 @@ function Produtos() {
           <Navbar />
 
             <Body>
-              <Link to="/painel/produtos/register">
+              <Link to="/painel/produtos/cadastro">
                 <Item>
                   <Title>
                     Cadastrar
@@ -42,17 +42,19 @@ function Produtos() {
                 </Item>
               </Link>
 
-              <Item>
-                <Title>
-                  Pesquisar
-                </Title>
+              <Link to="/painel/produtos/pesquisa">
+                <Item>
+                  <Title>
+                    Pesquisar
+                  </Title>
 
-                <Divider />
-                <More>
-                  <FaExternalLinkAlt style={{marginRight: '5px'}}/>
-                    Pesquisar produto
-                </More>
-              </Item>
+                  <Divider />
+                  <More>
+                    <FaExternalLinkAlt style={{marginRight: '5px'}}/>
+                      Pesquisar produto
+                  </More>
+                </Item>
+              </Link>
             </Body>
 
           <Footer />

@@ -27,18 +27,61 @@ import Footer from '../../components/Footer';
 import Slider from '../../components/Slider';
 
 // ASSETS
-import product from '../../assets/products/01.png';
+import loading from '../../assets/gif/loading2.gif';
 
 // SERVICES
 import { useParams } from 'react-router-dom';
+import api from '../../services/api';
+import { toast } from 'react-toastify';
+
+// STORE
+import { useSelector } from 'react-redux';
 
 function Buy() {
 
     const params = useParams();
 
-    const [valor] = useState(20);
+    const profileRedux = useSelector(state => state.user.user);
+
+    const [profile] = useState(profileRedux);
+
+    const [produto, setProduto] = useState('');
+    const [valor, setValor] = useState(0);
     const [totValue, setTotValue] = useState(valor);
     const [qnt, setQnt] = useState(1);
+    const [bairro, setBairro] = useState(1);
+    const [imagem, setImagem] = useState(loading);
+
+    async function loadProduct(){
+        const response = await api.get(`search_product/${params.id}`);
+        setProduto(response.data);
+        setValor(response.data.valor);
+        setTotValue(response.data.valor);
+        loadImagem(response.data.file_id);
+    }
+
+    async function loadImagem(e){
+        const response = await api.get(`search_img/${e}`)
+        setImagem(response.data.url);
+    }
+    
+    async function handleBuy(){
+        try{
+            const response = await api.post('register_order', {
+                bairro,
+                qnt,
+                subtotal: totValue,
+                user_id: profile.id,
+                product_id: params.id
+            })
+            toast.info('Finalizando pedido...', { position: 'bottom-center' });
+            setTimeout(function(){
+                window.location.href=`http://localhost:3000/finalizar-compra/${response.data}`
+            }, 3000)
+        }catch(err){
+            toast.error('Erro ao comprar produto, por favor tente novamente!', { position: 'bottom-center'} );
+        }
+    }
 
     function handleMenos(){
         if(qnt !== 1){
@@ -60,6 +103,7 @@ function Buy() {
 
     useEffect(()=>{
         window.location.href="#index";
+        loadProduct();
     }, [])
 
   return (
@@ -69,47 +113,17 @@ function Buy() {
             <div id="index"/>
         
             <Body>
-                <Product src={product} alt="PRODUTO"/>
+                <Product src={imagem} alt="PRODUTO"/>
                 
                 <Right>
 
                     <Title>
-                        Ovo caipira ({
-                            params.qnt === '1'?
-                            "Dúzia"
-                            :
-                            <>
-                                {
-                                    params.qnt === '2'?
-                                    "Pente"
-                                    :
-                                    "Caixa"
-                                }
-                            </>
-                        })
+                        {produto.titulo}
                     </Title>
 
                     <Subtitle>
                         <b>Este pedido inclui:</b>
-                        {
-                            params.qnt === '1'?
-                            <span>
-                                • Uma dúzia (12 ovos) de galinha caipira.
-                            </span>
-                            :
-                            <>
-                                {
-                                    params.qnt === '2'?
-                                    <span>
-                                        • Um pente (30 ovos) de galinha caipira.
-                                    </span>
-                                    :
-                                    <span>
-                                        • Uma caixa (360 ovos) de galinha caipira.
-                                    </span>
-                                }
-                            </>
-                        }
+                        {produto.descricao}
                     </Subtitle>
 
                     <Options>
@@ -129,7 +143,7 @@ function Buy() {
                             <Label>
                                 Bairro da Entrega:
                             </Label>
-                            <Select>
+                            <Select value={bairro} onChange={e => setBairro(e.target.value)}>
                                 <option value={1}>Aclimação</option>
                                 <option value={2}>Alvorada</option>
                                 <option value={3}>Areia Preta</option>
@@ -211,7 +225,7 @@ function Buy() {
                         <ButtonQnt onClick={handleMais}>+</ButtonQnt>
                     </Quantidade>
 
-                    <Checkout>
+                    <Checkout onClick={handleBuy}>
                         COMPRAR AGORA
                     </Checkout>
 

@@ -12,7 +12,7 @@ export default function user(state = INITIAL_STATE, action){
             break;
         }
             
-        case "@user/UPDATE_PESSOAL_SUCCESS":{
+        case "@user/UPDATE_USER_SUCCESS":{
             draft.user = action.payload.user;
             break;
         }

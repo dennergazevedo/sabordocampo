@@ -39,7 +39,7 @@ export function setToken({ payload }){
 }
 
 export function signOut(){
-    toast.success('Deslogado com sucesso! Redirecionando...', { position: "bottom-right" });
+    toast.success('Deslogado com sucesso! Redirecionando...', { position: "bottom-center" });
     setTimeout(function(){
         history.push('/');
         window.location.reload();

@@ -121,7 +121,7 @@ function Assign() {
                         <Form>
 
                             <Label>
-                                Peridicidade da Entrega:
+                                Periodicidade da Entrega:
                             </Label>
                             <Select>
                                 <option value={1}>Semanal</option>

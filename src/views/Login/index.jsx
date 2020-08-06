@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-restricted-globals */
 import React, { useState } from 'react';
 
@@ -43,14 +44,20 @@ import { signInRequest } from '../../store/modules/auth/actions';
 
 // VALIDATOR
 import validator from 'validator';
+import api from '../../services/api';
 
 function Login() {
 
     const dispatch = useDispatch();
     const loading = useSelector(state => state.auth.loading);
 
+    const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [emailReg, setEmailReg] = useState('');
+    const [passwordReg, setPasswordReg] = useState('');
+    const [confirmPass, setConfirmPass] = useState('');
+    const [termos, setTermos] = useState(false);
 
     function handleLogin(){
         window.event.preventDefault()
@@ -59,6 +66,31 @@ function Login() {
           setTimeout(function(){window.location.reload()}, 3000);
         } else {
           toast.error('Digite um e-mail válido.', { position: 'bottom-center'} );
+        }
+    }
+
+    async function handleRegister(){
+        if (validator.isEmail(email)){
+            if(passwordReg === confirmPass){
+                if(termos){
+                    try{
+                        await api.post('register_user',{
+                            nome,
+                            email: emailReg,
+                            password: passwordReg,
+                        })
+                        dispatch(signInRequest(emailReg, passwordReg));
+                    }catch(err){
+                        toast.error('Falha ao cadastrar usuário', { position: 'bottom-center' });
+                    }
+                }else{
+                    toast.error('É necessário concordar com os termos de uso', { position: 'bottom-center' });
+                }
+            }else{
+                toast.error('As senhas não conferem', { position: 'bottom-center' });
+            }
+        }else{
+            toast.error('Digite um e-mail válido', { position: 'bottom-center' });
         }
     }
 
@@ -131,29 +163,36 @@ function Login() {
                         <DividerOr/>
                     </ContainerDivider>
 
-                    <FormLogin>
+                    <FormLogin onSubmit={handleRegister}>
+
+                        <LabelLogin>
+                            Nome*
+                        </LabelLogin>
+                        <InputEmail value={nome} onChange={e => setNome(e.target.value)} type="text" placeholder="Nome Completo"/>
+
+
                         <LabelLogin for="emailregister">
                             E-mail*
                         </LabelLogin>
-                        <InputEmail id="emailregister" type="email" placeholder="exemplo@email.com"/>
+                        <InputEmail value={emailReg} onChange={e => setEmailReg(e.target.value)} id="emailregister" type="email" placeholder="exemplo@email.com"/>
 
                         <LabelLogin for="passwordregister">
                             Senha*
                         </LabelLogin>
-                        <InputEmail id="passwordregister" type="password" placeholder="********"/>
+                        <InputEmail value={passwordReg} onChange={e => setPasswordReg(e.target.value)} id="passwordregister" type="password" placeholder="********"/>
 
                         <LabelLogin for="passwordconfirm">
                             Confirme sua Senha*
                         </LabelLogin>
-                        <InputEmail id="passwordconfirm" type="password" placeholder="********"/>
+                        <InputEmail value={confirmPass} onChange={e => setConfirmPass(e.target.value)} id="passwordconfirm" type="password" placeholder="********"/>
 
                         <Termos>
-                            <input type="checkbox" id="termos" style={{marginRight:'5px'}}/>
-                            Li e concordo com os &nbsp;
+                            <input value={termos} onChange={e => setTermos(!termos)} type="checkbox" id="termos" style={{marginRight:'5px'}}/>
+                                Li e concordo com os &nbsp;
                             <LinkTermos>Termos de uso.</LinkTermos>
                         </Termos>
 
-                        <ButtonSignIn>
+                        <ButtonSignIn type="submit">
                             Registrar-se
                         </ButtonSignIn>
                     </FormLogin>

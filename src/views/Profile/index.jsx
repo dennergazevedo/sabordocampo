@@ -45,16 +45,18 @@ function Profile() {
           <Navbar />
 
           <Body>
-            <Item>
-                <Title>
-                    DETALHES DA CONTA
-                </Title>
-                <Divider />
-                <More>
-                    <FaExternalLinkAlt style={{marginRight: '5px'}}/>
-                    Saiba mais...
-                </More>
-            </Item>
+            <Link to="/perfil/detalhes">
+                <Item>
+                    <Title>
+                        DETALHES DA CONTA
+                    </Title>
+                    <Divider />
+                    <More>
+                        <FaExternalLinkAlt style={{marginRight: '5px'}}/>
+                        Saiba mais...
+                    </More>
+                </Item>
+            </Link>
 
             <Item>
                 <Title>

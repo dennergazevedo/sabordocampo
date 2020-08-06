@@ -4,20 +4,20 @@ import { toast } from 'react-toastify';
 
 import api from '../../../services/api';
 
-import { updatePessoalSuccess, updatePessoalFailure, updateProfileImgSuccess } from './actions';
+import { updateUserSuccess, updateUserFailure, updateProfileImgSuccess } from './actions';
 
-export function* updatePessoal({ payload }){
+export function* updateUser({ payload }){
     try{
         const { id } = payload.data;
 
-        const response = yield call (api.put, `update_collab/${id}`, payload.data);
+        const response = yield call (api.put, `update_user/${id}`, payload.data);
 
         toast.success('Perfil atualizado com sucesso!', { position: "bottom-center" });
 
-        yield put(updatePessoalSuccess(response.data));
+        yield put(updateUserSuccess(response.data));
     } catch (err){
         toast.error('Erro ao atualizar perfil', { position: "bottom-center" });
-        yield put(updatePessoalFailure());
+        yield put(updateUserFailure());
     }
 }
 
@@ -36,11 +36,11 @@ export function* updateProfileImg({ payload }){
         setTimeout(function(){window.location.reload()},2000)
     } catch (err){
         toast.error('Erro ao atualizar perfil', { position: "bottom-center" });
-        yield put(updatePessoalFailure());
+        yield put(updateUserFailure());
     }
 }
 
 export default all([
-    takeLatest('@user/UPDATE_PESSOAL_REQUEST', updatePessoal),
+    takeLatest('@user/UPDATE_USER_REQUEST', updateUser),
     takeLatest('@user/UPDATE_PROFILE_IMG_REQUEST', updateProfileImg),
 ]);

@@ -17,7 +17,11 @@ import Produtos from '../views/Admin/Produtos';
 import Pedidos from '../views/Admin/Pedidos';
 import Assinaturas from '../views/Admin/Assinaturas';
 import Clientes from '../views/Admin/Clientes';
-import CadastrarProduto from '../views/Admin/Produtos/Register.jsx';
+import Checkout from '../views/Checkout';
+import CadastrarProduto from '../views/Admin/Produtos/Register';
+import PesquisarProduto from '../views/Admin/Produtos/Search';
+import EditarProduto from '../views/Admin/Produtos/Editar';
+import Detalhes from '../views/Profile/Details';
 
 export default function Routes(){
 
@@ -30,12 +34,16 @@ export default function Routes(){
                 <Route path="/comprar/:id" exact component={Buy} />
                 <Route path="/produtos" exact component={Products} />
                 <Route path="/perfil" exact component={Profile} isPrivate/>
+                <Route path="/perfil/detalhes" exact component={Detalhes} isPrivate/>
                 <Route path="/painel" exact component={Admin} Admin/>
                 <Route path="/painel/produtos" exact component={Produtos} Admin/>
-                <Route path="/painel/produtos/register" exact component={CadastrarProduto} Admin/>
+                <Route path="/painel/produtos/cadastro" exact component={CadastrarProduto} Admin/>
+                <Route path="/painel/produtos/pesquisa" exact component={PesquisarProduto} Admin/>
+                <Route path="/painel/produtos/editar/:id" exact component={EditarProduto} Admin/>
                 <Route path="/painel/pedidos" exact component={Pedidos} Admin/>
                 <Route path="/painel/assinaturas" exact component={Assinaturas} Admin/>
                 <Route path="/painel/clientes" exact component={Clientes} Admin/>
+                <Route path="/finalizar-compra/:id" exact component={Checkout} />
             </Switch>
         </BrowserRouter>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // STYLED COMPONENTS
 import { 
@@ -18,10 +18,21 @@ import Product from './Product';
 // ASSETS
 import nossosprodutos from '../../assets/img/nossosprodutos.png';
 
+// SERVICES
+import api from '../../services/api';
+
 function Products() {
+
+    const [products, setProducts] = useState(new Map());
+
+    async function loadProducts(){
+        const response = await api.get('search_all_product')
+        setProducts(response.data);
+    }
 
     useEffect(()=>{
         window.location.href="#index";
+        loadProducts();
     }, [])
 
   return (
@@ -41,18 +52,16 @@ function Products() {
             </Subtitle>
 
             <ProductList>
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
+                {[...products.keys()].map(id => (
+                    <>
+                        {
+                            products[id].estoque !== 0 ?
+                                <Product key={id} produto={products[id]} />
+                            :
+                            null
+                        }
+                    </>
+                ))}
             </ProductList>
           </Body>
 

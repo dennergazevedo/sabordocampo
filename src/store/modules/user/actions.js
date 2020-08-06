@@ -1,20 +1,20 @@
-export function updatePessoalRequest(data){
+export function updateUserRequest(data){
     return{
-        type: '@user/UPDATE_PESSOAL_REQUEST',
+        type: '@user/UPDATE_USER_REQUEST',
         payload: { data },
     };
 }
 
-export function updatePessoalSuccess(user){
+export function updateUserSuccess(user){
     return{
-        type: '@user/UPDATE_PESSOAL_SUCCESS',
+        type: '@user/UPDATE_USER_SUCCESS',
         payload: { user },
     };
 }
 
-export function updatePessoalFailure(){
+export function updateUserFailure(){
     return{
-        type: '@user/UPDATE_PESSOAL_FAILURE',
+        type: '@user/UPDATE_USER_FAILURE',
     };
 }
 
