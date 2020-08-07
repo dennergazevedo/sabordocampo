@@ -9,7 +9,6 @@ export default createGlobalStyle`
     text-decoration: none !important;
     outline: 0 !important;
     max-width: 100vw;
-    overflow-x: hidden;
   }
 
   *, button, input {
@@ -20,6 +19,7 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased !important;
     background-color: #f2f2f2;
+    overflow-x: hidden;
   }
 
   body, input, button {

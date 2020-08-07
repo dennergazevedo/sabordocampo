@@ -72,7 +72,8 @@ function Buy() {
                 qnt,
                 subtotal: totValue,
                 user_id: profile.id,
-                product_id: params.id
+                product_id: params.id,
+                pagamento: "Aguardando pagamento",
             })
             toast.info('Finalizando pedido...', { position: 'bottom-center' });
             setTimeout(function(){

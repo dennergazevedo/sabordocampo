@@ -42,8 +42,12 @@ function Footer() {
                             (31) 9 9988-8949
                         </Phone>
                         <Social>
-                            <AiFillFacebook style={{ cursor: 'pointer', margin: '10px' }} />
-                            <AiOutlineInstagram style={{ cursor: 'pointer', margin: '10px' }} />
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/sabordocampomg">
+                                <AiFillFacebook style={{ cursor: 'pointer', margin: '10px' }} />
+                            </a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/sabordocampo_mg/">
+                                <AiOutlineInstagram style={{ cursor: 'pointer', margin: '10px' }} />
+                            </a>
                         </Social>
                     </Contato>
                 </Left>
@@ -62,25 +66,19 @@ function Footer() {
                     </Sac>
 
                     <SacLink>
-                        <TextLink>
-                            Dúvidas frequentes
-                        </TextLink>
-
-                        <DividerLink />
-
-                        <TextLink>
+                        <TextLink href="/termos-de-uso">
                             Termos de uso
                         </TextLink>
 
                         <DividerLink />
 
-                        <TextLink>
+                        <TextLink href="/seguranca-e-privacidade">
                             Segurança e privacidade
                         </TextLink>
 
                         <DividerLink />
 
-                        <TextLink>
+                        <TextLink href="/trocas-e-cancelamento">
                             Trocas e cancelamento
                         </TextLink>
 

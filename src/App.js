@@ -15,6 +15,7 @@ import { store, persistor } from './store';
 // STYLES
 import GlobalStyles from '../src/styles/global';
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // SERVICES
 import history from './services/history';

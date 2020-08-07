@@ -58,6 +58,15 @@ export const Social = styled.div`
     align-items: center;
     margin: 20px;
     font-size: 34px;
+
+    a{
+        text-decoration: none;
+        color: #FFF;
+
+        &:hover{
+            color: #FFF9;
+        }
+    }
 `;
 
 export const Divider = styled.hr`
@@ -94,11 +103,16 @@ export const SacLink = styled.div`
     margin: 5px;
 `;
 
-export const TextLink = styled.span`
+export const TextLink = styled.a`
     cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
+    color: #FFF;
+
+    &:hover{
+        color: #FFF9;
+    }
 `;
 
 export const DividerLink = styled.hr`

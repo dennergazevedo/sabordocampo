@@ -77,10 +77,12 @@ function MenuMobile() {
                                 <FaAngleRight style={{marginRight: '10px'}}/>
                                 Quem somos
                             </ItemMenu>
-                            <ItemMenu>
-                                <FaAngleRight style={{marginRight: '10px'}}/>
-                                Contato
-                            </ItemMenu>
+                            <Link to="/contato">
+                                <ItemMenu>
+                                    <FaAngleRight style={{marginRight: '10px'}}/>
+                                    Contato
+                                </ItemMenu>
+                            </Link>
                         </Superior>
                         <Inferior>
                             {

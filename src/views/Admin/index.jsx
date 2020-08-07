@@ -56,20 +56,6 @@ function Admin() {
                 </Item>
               </Link>
 
-              <Link to="/painel/assinaturas">
-                <Item>
-                  <Title>
-                    ASSINATURAS
-                  </Title>
-
-                  <Divider />
-                  <More>
-                    <FaExternalLinkAlt style={{marginRight: '5px'}}/>
-                      Saiba mais...
-                  </More>
-                </Item>
-              </Link>
-
               <Link to="/painel/clientes">
                 <Item>
                   <Title>

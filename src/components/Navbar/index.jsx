@@ -42,12 +42,16 @@ function Navbar() {
                         Produtos
                     </ItemText>
                 </Link>
+
                 <ItemText>
                     Quem somos
                 </ItemText>
-                <ItemText>
-                    Contato
-                </ItemText>
+
+                <Link to="/contato">
+                    <ItemText>
+                        Contato
+                    </ItemText>
+                </Link>
 
                 <Link to="/perfil">
                     <ItemIcon>

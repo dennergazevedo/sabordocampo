@@ -55,6 +55,7 @@ export const Item = styled.div`
     margin-left: 20px;
     margin-right: 20px;
     width: 45%;
+    min-width: 350px;
 
     label{
         font-size: 12px;

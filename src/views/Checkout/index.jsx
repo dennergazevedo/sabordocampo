@@ -47,6 +47,7 @@ function Checkout() {
     const [titulo, setTitulo] = useState('');
     const [qnt, setQnt] = useState(0);
     const [subTotal, setSubTotal] = useState(0);
+    const [periodicidade, setPeriodicidade] = useState(null);
 
     async function loadInfo(){
         const response = await api.get(`search_order/${params.id}`)
@@ -55,6 +56,7 @@ function Checkout() {
         setQnt(response.data.qnt);
         setSubTotal(response.data.subtotal);
         setBairro(response.data.bairro);
+        setPeriodicidade(response.data.periodicidade);
     }
 
     async function loadUser(e){
@@ -274,8 +276,23 @@ function Checkout() {
 
                     <Items>
                         <span>SUBTOTAL</span>
-                        <span>R${subTotal.toFixed(2)}</span>
+                        {
+                            periodicidade ?
+                            <span>R${subTotal.toFixed(2)} / ciclo</span>
+                            :
+                            <span>R${subTotal.toFixed(2)}</span>
+                        }
                     </Items>
+
+                    {
+                        periodicidade ?
+                        <Items>
+                            <span>PERIODICIDADE</span>
+                            <span>Ciclo de {periodicidade} dias</span>
+                        </Items>
+                        :
+                        null
+                    }
                     
                     <CheckoutButton>
                         FINALIZAR PEDIDO

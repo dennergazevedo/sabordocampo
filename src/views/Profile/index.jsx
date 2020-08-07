@@ -45,7 +45,7 @@ function Profile() {
           <Navbar />
 
           <Body>
-            <Link to="/perfil/detalhes">
+            <Link replace to="/perfil/detalhes">
                 <Item>
                     <Title>
                         DETALHES DA CONTA
@@ -58,32 +58,45 @@ function Profile() {
                 </Item>
             </Link>
 
-            <Item>
-                <Title>
-                    PEDIDOS
-                </Title>
-                <Divider />
-                <More>
-                    <FaExternalLinkAlt style={{marginRight: '5px'}}/>
-                    Saiba mais...
-                </More>
-            </Item>
+            {
+                profile.provider === 143 || profile.provider === '143'?
+                null
+                :
+                <>
+                    <Link replace to="/perfil/pedidos">
+                        <Item>
+                            <Title>
+                                PEDIDOS
+                            </Title>
+                            <Divider />
+                            <More>
+                                <FaExternalLinkAlt style={{marginRight: '5px'}}/>
+                                Saiba mais...
+                            </More>
+                        </Item>
+                    </Link>
 
-            <Item>
-                <Title>
-                    ASSINATURA
-                </Title>
-                <Divider />
-                <More>
-                    <FaExternalLinkAlt style={{marginRight: '5px'}}/>
-                    Saiba mais...
-                </More>
-            </Item>
+                    <Link replace to="/perfil/assinaturas">
+                        <Item>
+                            <Title>
+                                ASSINATURA
+                            </Title>
+                            <Divider />
+                            <More>
+                                <FaExternalLinkAlt style={{marginRight: '5px'}}/>
+                                Saiba mais...
+                            </More>
+                        </Item> 
+                    </Link>
+                </>
+            }
+            
+            
           </Body>
           
           {
               profile.provider === 143 || profile.provider === '143'?
-              <Link to="/painel">
+              <Link replace to="/painel">
                 <Admin>
                     PAINEL ADMINISTRATIVO
                 </Admin>

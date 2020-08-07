@@ -5,8 +5,9 @@ export const Container = styled.div`
     flex-direction: column;
     max-width: 100vw;
     width: 100vw;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    min-height: 100vh;
 `;
 
 export const Body = styled.div`
