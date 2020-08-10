@@ -77,7 +77,7 @@ function Buy() {
             })
             toast.info('Finalizando pedido...', { position: 'bottom-center' });
             setTimeout(function(){
-                window.location.href=`http://localhost:3000/finalizar-compra/${response.data}`
+                window.location.href=`http://162.241.102.200:41097/finalizar-compra/${response.data}`
             }, 3000)
         }catch(err){
             toast.error('Erro ao comprar produto, por favor tente novamente!', { position: 'bottom-center'} );

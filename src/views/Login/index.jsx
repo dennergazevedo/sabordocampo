@@ -70,7 +70,7 @@ function Login() {
     }
 
     async function handleRegister(){
-        if (validator.isEmail(email)){
+        if (validator.isEmail(emailReg)){
             if(passwordReg === confirmPass){
                 if(termos){
                     try{
