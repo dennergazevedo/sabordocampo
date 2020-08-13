@@ -25,16 +25,52 @@ import {
 // COMPONENTES
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import Paypal from '../../components/Paypal/index.jsx';
 import InputMask from 'react-input-mask';
+
+// BUTTONS PAYPAL
+import CaixaMensalF10 from '../../components/Buttons/CaixaMensalF10.jsx';
+import CaixaMensalF15 from '../../components/Buttons/CaixaMensalF15.jsx';
+import CaixaMensalF20 from '../../components/Buttons/CaixaMensalF20.jsx';
+import CaixaQuinzenalF10 from '../../components/Buttons/CaixaQuinzenalF10.jsx';
+import CaixaQuinzenalF15 from '../../components/Buttons/CaixaQuinzenalF15.jsx';
+import CaixaQuinzenalF20 from '../../components/Buttons/CaixaQuinzenalF20.jsx';
+import CaixaSemanalF10 from '../../components/Buttons/CaixaSemanalF10.jsx';
+import CaixaSemanalF15 from '../../components/Buttons/CaixaSemanalF15.jsx';
+import CaixaSemanalF20 from '../../components/Buttons/CaixaSemanalF20.jsx';
+import DuziaMensalF10 from '../../components/Buttons/DuziaMensalF10.jsx';
+import DuziaMensalF15 from '../../components/Buttons/DuziaMensalF15.jsx';
+import DuziaMensalF20 from '../../components/Buttons/DuziaMensalF20.jsx';
+import DuziaQuinzenalF10 from '../../components/Buttons/DuziaQuinzenalF10.jsx';
+import DuziaQuinzenalF15 from '../../components/Buttons/DuziaQuinzenalF15.jsx';
+import DuziaQuinzenalF20 from '../../components/Buttons/DuziaQuinzenalF20.jsx';
+import DuziaSemanalF10 from '../../components/Buttons/DuziaSemanalF10.jsx';
+import DuziaSemanalF15 from '../../components/Buttons/DuziaSemanalF15.jsx';
+import DuziaSemanalF20 from '../../components/Buttons/DuziaSemanalF20.jsx';
+import PenteMensalF10 from '../../components/Buttons/PenteMensalF10.jsx';
+import PenteMensalF15 from '../../components/Buttons/PenteMensalF15.jsx';
+import PenteMensalF20 from '../../components/Buttons/PenteMensalF20.jsx';
+import PenteQuinzenalF10 from '../../components/Buttons/PenteQuinzenalF10.jsx';
+import PenteQuinzenalF15 from '../../components/Buttons/PenteQuinzenalF15.jsx';
+import PenteQuinzenalF20 from '../../components/Buttons/PenteQuinzenalF20.jsx';
+import PenteSemanalF10 from '../../components/Buttons/PenteSemanalF10.jsx';
+import PenteSemanalF15 from '../../components/Buttons/PenteSemanalF15.jsx';
+import PenteSemanalF20 from '../../components/Buttons/PenteSemanalF20.jsx';
 
 // SERVICES
 import api from '../../services/api';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+// STORE
+import { useSelector } from 'react-redux';
 
 function Checkout() {
 
     const params = useParams();
+    const profileRedux = useSelector(state => state.user.user);
 
+    const [profile] = useState(profileRedux);
     const [document, setDocument] = useState(null);
     const [pessoa, setPessoa] = useState('1');
     const [bairro, setBairro] = useState(1);
@@ -48,6 +84,9 @@ function Checkout() {
     const [qnt, setQnt] = useState(0);
     const [subTotal, setSubTotal] = useState(0);
     const [periodicidade, setPeriodicidade] = useState(null);
+    const [confirm, setConfirm] = useState(false);
+    const [prodId, setProdId] = useState('');
+    const [frete, setFrete] = useState(0);
 
     async function loadInfo(){
         const response = await api.get(`search_order/${params.id}`)
@@ -57,6 +96,7 @@ function Checkout() {
         setSubTotal(response.data.subtotal);
         setBairro(response.data.bairro);
         setPeriodicidade(response.data.periodicidade);
+        setFrete(response.data.frete);
     }
 
     async function loadUser(e){
@@ -71,6 +111,33 @@ function Checkout() {
     async function loadProduto(e){
         const response = await api.get(`search_product/${e}`);
         setTitulo(response.data.titulo);
+        setProdId(e)
+    }
+
+    async function handleConfirmData(){
+        try{
+            const response = await api.post('register_address', {
+                logradouro,
+                numero,
+                bairro,
+                cidade: 'João Monlevade',
+                estado: 'Minas Gerais',
+                user_id: profile.id,
+            })
+
+            await api.put(`update_user/${profile.id}`, {
+                document,
+                phone,
+            })
+
+            await api.put(`update_order/${params.id}`, {
+                address_id: response.data,
+            })
+
+            setConfirm(true);
+        }catch(err){
+            toast.error('Oops, falha ao finalizar pedido!', { position: 'bottom-center' });
+        }
     }
 
     useEffect(()=>{
@@ -90,12 +157,12 @@ function Checkout() {
                     <ItemInput>
                         <InputDiv>
                             <label>Nome *</label>
-                            <input type="text" value={nome} onChange={e => setNome(e.target.nome)}/>
+                            <input disabled type="text" value={nome} onChange={e => setNome(e.target.nome)}/>
                         </InputDiv>
 
                         <InputDiv>
                             <label>Sobrenome *</label>
-                            <input type="text" value={sobrenome} onChange={e => setSobrenome(e.target.value)}/>
+                            <input disabled type="text" value={sobrenome} onChange={e => setSobrenome(e.target.value)}/>
                         </InputDiv>
                     </ItemInput>
 
@@ -118,6 +185,7 @@ function Checkout() {
                                 value={document}
                                 className="inputMask"
                                 placeholder=" 999.999.999-99"
+                                disabled={confirm}
                                 />
                             </InputDiv>
                             :
@@ -129,6 +197,7 @@ function Checkout() {
                                 value={document}
                                 className="inputMask"
                                 placeholder=" 99.999.999/9999-99"
+                                disabled={confirm}
                                 />
                             </InputDiv>
                         }
@@ -137,7 +206,7 @@ function Checkout() {
                     <ItemInput>
                         <InputDiv>
                             <label>E-mail *</label>
-                            <input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                            <input disabled type="text" value={email}/>
                         </InputDiv>
 
                         <InputDiv>
@@ -147,6 +216,7 @@ function Checkout() {
                                 onChange={e => setPhone(e.target.value)}
                                 value={phone}
                                 className="inputMask"
+                                disabled={confirm}
                             />
                         </InputDiv>
                     </ItemInput>
@@ -174,58 +244,54 @@ function Checkout() {
                         <InputDiv>
                             <label>Bairro *</label>
                             <select value={bairro} disabled>
-                                <option value={1}>Aclimação</option>
-                                <option value={2}>Alvorada</option>
-                                <option value={3}>Areia Preta</option>
-                                <option value={4}>Baú</option>
-                                <option value={5}>Belmonte</option>
-                                <option value={6}>Boa Vista</option>
-                                <option value={7}>Campos Elísios</option>
-                                <option value={8}>Carneirinhos</option>
-                                <option value={9}>Centro Industrial</option>
-                                <option value={10}>Cruzeiro Celeste</option>
-                                <option value={11}>Estrela Dalva</option>
-                                <option value={12}>Gentil Bicalho</option>
-                                <option value={13}>Industrial</option>
-                                <option value={14}>Jacuí</option>
-                                <option value={15}>JK</option>
-                                <option value={16}>José de Alencar</option>
-                                <option value={17}>José Eloi</option>
-                                <option value={18}>Laranjeiras</option>
-                                <option value={19}>Loanda</option>
-                                <option value={20}>Lourdes</option>
-                                <option value={21}>Lucilia</option>
-                                <option value={22}>Mangabeiras</option>
-                                <option value={23}>Metalúrgico</option>
-                                <option value={24}>Nossa Senhora da Conceição</option>
-                                <option value={25}>Nossa Senhora do Rosário</option>
-                                <option value={26}>Nova Aclimação</option>
-                                <option value={27}>Nova Esperança</option>
-                                <option value={28}>Novo Cruzeiro</option>
-                                <option value={29}>Novo Horizonte</option>
-                                <option value={30}>Paineiras</option>
-                                <option value={31}>Palmares</option>
-                                <option value={32}>Pedreira</option>
-                                <option value={33}>Petrópolis</option>
-                                <option value={34}>Recanto Paraíso</option>
-                                <option value={35}>República</option>
-                                <option value={36}>Rosário</option>
-                                <option value={37}>Santa Bárbara</option>
-                                <option value={38}>Santa Cruz</option>
-                                <option value={39}>Santa Lúcia</option>
-                                <option value={40}>Santo Hipólito</option>
-                                <option value={41}>São Benedito</option>
-                                <option value={42}>São João</option>
-                                <option value={43}>São Jorge</option>
-                                <option value={44}>Satélite</option>
-                                <option value={45}>Sion</option>
-                                <option value={46}>Tanquinho</option>
-                                <option value={47}>Teresópolis</option>
-                                <option value={48}>Vera Cruz</option>
-                                <option value={49}>Vila Formosa</option>
-                                <option value={50}>Vila Sol</option>
-                                <option value={51}>Vila Tanque</option>
-                                <option value={52}>Zona Rural</option>
+                                <option /* R$6,00 */ value={1}>Aclimação</option>
+                                <option /* R$6,00 */ value={2}>Alvorada</option>
+                                <option /* R$11,00 */ value={3}>Areia Preta</option>
+                                <option /* R$8,00 */ value={4}>Baú</option>
+                                <option /* R$7,00 */ value={5}>Belmonte</option>
+                                <option /* R$8,00 */ value={6}>Boa Vista</option>
+                                <option /* R$9,00 */ value={7}>Campos Elísios</option>
+                                <option /* R$6,00 */ value={8}>Carneirinhos</option>
+                                <option /* R$19,00 */ value={9}>Centro Industrial</option>
+                                <option /* R$11,00 */ value={10}>Cruzeiro Celeste</option>
+                                <option /* R$13,00 */ value={11}>Estrela Dalva</option>
+                                <option /* R$7,00 */ value={12}>Industrial</option>
+                                <option /* R$16,00 */ value={13}>Jacuí</option>
+                                <option /* R$7,00 */ value={14}>JK</option>
+                                <option /* R$7,00 */ value={15}>José de Alencar</option>
+                                <option /* R$6,00 */ value={16}>José Eloi</option>
+                                <option /* R$8,00 */ value={17}>Laranjeiras</option>
+                                <option /* R$7,00 */ value={18}>Loanda</option>
+                                <option /* R$6,00 */ value={19}>Lourdes</option>
+                                <option /* R$6,00 */ value={20}>Lucilia</option>
+                                <option /* R$6,00 */ value={21}>Mangabeiras</option>
+                                <option /* R$8,00 */ value={22}>Metalúrgico</option>
+                                <option /* R$6,00 */ value={23}>Nossa Senhora da Conceição</option>
+                                <option /* R$6,00 */ value={24}>Nova Aclimação</option>
+                                <option /* R$8,00 */ value={25}>Nova Esperança</option>
+                                <option /* R$11,00 */ value={26}>Novo Cruzeiro</option>
+                                <option /* R$7,00 */ value={27}>Novo Horizonte</option>
+                                <option /* R$9,00 */ value={28}>Paineiras</option>
+                                <option /* R$9,00 */ value={29}>Palmares</option>
+                                <option /* R$13,00 */ value={30}>Pedreira</option>
+                                <option /* R$13,00 */ value={31}>Petrópolis</option>
+                                <option /* R$7,00 */ value={32}>Recanto Paraíso</option>
+                                <option /* R$6,00 */ value={33}>República</option>
+                                <option /* R$6,00 */ value={34}>Rosário</option>
+                                <option /* R$6,00 */ value={35}>Santa Bárbara</option>
+                                <option /* R$19,00 */ value={36}>Santa Cruz</option>
+                                <option /* R$11,00 */ value={37}>Santo Hipólito</option>
+                                <option /* R$6,00 */ value={38}>São Benedito</option>
+                                <option /* R$6,00 */ value={39}>São João</option>
+                                <option /* R$7,00 */ value={40}>São Jorge</option>
+                                <option /* R$7,00 */ value={41}>Satélite</option>
+                                <option /* R$9,00 */ value={42}>Sion</option>
+                                <option /* R$13,00 */ value={43}>Tanquinho</option>
+                                <option /* R$11,00 */ value={44}>Teresópolis</option>
+                                <option /* R$6,00 */ value={45}>Vale Sol</option>
+                                <option /* R$19,00 */ value={46}>Vera Cruz</option>
+                                <option /* R$11,00 */ value={47}>Vila Tanque</option>
+                                <option /* R$20,00 */ value={48}>Zona Rural</option>
                             </select>
                         </InputDiv>
                     </ItemInput>
@@ -233,12 +299,12 @@ function Checkout() {
                     <ItemInput>
                         <InputDiv>
                             <label>Rua *</label>
-                            <input type="text" value={logradouro} onChange={e => setLogradouro(e.target.value)}/>
+                            <input disabled={confirm} type="text" value={logradouro} onChange={e => setLogradouro(e.target.value)}/>
                         </InputDiv>
 
                         <InputDiv>
                             <label>Numero *</label>
-                            <input type="number" value={numero} onChange={e => setNumero(e.target.value)}/>
+                            <input disabled={confirm} type="number" value={numero} onChange={e => setNumero(e.target.value)}/>
                         </InputDiv>
                     </ItemInput>
 
@@ -275,12 +341,17 @@ function Checkout() {
                     <DividerFino />
 
                     <Items>
+                        <span>FRETE</span>
+                        <span>R${Number(frete).toFixed(2)}</span>
+                    </Items>
+
+                    <Items>
                         <span>SUBTOTAL</span>
                         {
                             periodicidade ?
-                            <span>R${subTotal.toFixed(2)} / ciclo</span>
+                            <span>R${Number(Number(subTotal) + Number(frete)).toFixed(2)} / ciclo</span>
                             :
-                            <span>R${subTotal.toFixed(2)}</span>
+                            <span>R${Number(Number(subTotal) + Number(frete)).toFixed(2)}</span>
                         }
                     </Items>
 
@@ -293,14 +364,266 @@ function Checkout() {
                         :
                         null
                     }
-                    
-                    <CheckoutButton>
-                        FINALIZAR PEDIDO
-                    </CheckoutButton>
 
-                    <BackButton>
-                        VOLTAR
-                    </BackButton>
+                    {
+                        periodicidade ?
+                        <>
+                            {
+                                confirm?
+                                <>
+                                {
+                                    prodId === 1 || prodId === '1'?
+                                    <>
+                                    {
+                                        periodicidade === 7 || periodicidade === '7'?
+                                        <>
+                                            {
+                                                frete === 10 || frete === '10'?
+                                                <>
+                                                    <DuziaSemanalF10 />
+                                                </>
+                                                :
+                                                <>
+                                                {
+                                                    frete === 15 || frete === '15'?
+                                                    <>
+                                                        <DuziaSemanalF15 />
+                                                    </>
+                                                    :
+                                                    <DuziaSemanalF20 />
+                                                }
+                                                </>
+                                            }
+                                        </>
+                                        :
+                                        <>
+                                        {
+                                            periodicidade === 15 || periodicidade === '15'?
+                                            <>
+                                                {
+                                                    frete === 10 || frete === '10'?
+                                                    <>
+                                                        <DuziaQuinzenalF10 />
+                                                    </>
+                                                    :
+                                                    <>
+                                                    {
+                                                        frete === 15 || frete === '15'?
+                                                        <>
+                                                            <DuziaQuinzenalF15 />
+                                                        </>
+                                                        :
+                                                        <DuziaQuinzenalF20 />
+                                                    }
+                                                    </>
+                                                }
+                                            </>
+                                            :
+                                            <>
+                                                {
+                                                    frete === 10 || frete === '10'?
+                                                    <>
+                                                        <DuziaMensalF10 />
+                                                    </>
+                                                    :
+                                                    <>
+                                                    {
+                                                        frete === 15 || frete === '15'?
+                                                        <>
+                                                            <DuziaMensalF15 />
+                                                        </>
+                                                        :
+                                                        <DuziaMensalF20 />
+                                                    }
+                                                    </>
+                                                }
+                                            </>
+                                        }
+                                        </>
+                                    }
+                                    </>
+                                    :
+                                    <>
+                                    {
+                                        prodId === 2 || prodId === '2'?
+                                        <>
+                                    {
+                                        periodicidade === 7 || periodicidade === '7'?
+                                        <>
+                                            {
+                                                frete === 10 || frete === '10'?
+                                                <>
+                                                    <PenteSemanalF10 />
+                                                </>
+                                                :
+                                                <>
+                                                {
+                                                    frete === 15 || frete === '15'?
+                                                    <>
+                                                        <PenteSemanalF15 />
+                                                    </>
+                                                    :
+                                                    <PenteSemanalF20 />
+                                                }
+                                                </>
+                                            }
+                                        </>
+                                        :
+                                        <>
+                                        {
+                                            periodicidade === 15 || periodicidade === '15'?
+                                            <>
+                                                {
+                                                    frete === 10 || frete === '10'?
+                                                    <>
+                                                        <PenteQuinzenalF10 />
+                                                    </>
+                                                    :
+                                                    <>
+                                                    {
+                                                        frete === 15 || frete === '15'?
+                                                        <>
+                                                            <PenteQuinzenalF15 />
+                                                        </>
+                                                        :
+                                                        <PenteQuinzenalF20 />
+                                                    }
+                                                    </>
+                                                }
+                                            </>
+                                            :
+                                            <>
+                                                {
+                                                    frete === 10 || frete === '10'?
+                                                    <>
+                                                        <PenteMensalF10 />
+                                                    </>
+                                                    :
+                                                    <>
+                                                    {
+                                                        frete === 15 || frete === '15'?
+                                                        <>
+                                                            <PenteMensalF15 />
+                                                        </>
+                                                        :
+                                                        <PenteMensalF20 />
+                                                    }
+                                                    </>
+                                                }
+                                            </>
+                                        }
+                                        </>
+                                    }
+                                    </>
+                                        :
+                                        <>
+                                        {
+                                            prodId === 3 || prodId === '3'?
+                                            <>
+                                    {
+                                        periodicidade === 7 || periodicidade === '7'?
+                                        <>
+                                            {
+                                                frete === 10 || frete === '10'?
+                                                <>
+                                                    <CaixaSemanalF10 />
+                                                </>
+                                                :
+                                                <>
+                                                {
+                                                    frete === 15 || frete === '15'?
+                                                    <>
+                                                        <CaixaSemanalF15 />
+                                                    </>
+                                                    :
+                                                    <CaixaSemanalF20 />
+                                                }
+                                                </>
+                                            }
+                                        </>
+                                        :
+                                        <>
+                                        {
+                                            periodicidade === 15 || periodicidade === '15'?
+                                            <>
+                                                {
+                                                    frete === 10 || frete === '10'?
+                                                    <>
+                                                        <CaixaQuinzenalF10 />
+                                                    </>
+                                                    :
+                                                    <>
+                                                    {
+                                                        frete === 15 || frete === '15'?
+                                                        <>
+                                                            <CaixaQuinzenalF15 />
+                                                        </>
+                                                        :
+                                                        <CaixaQuinzenalF20 />
+                                                    }
+                                                    </>
+                                                }
+                                            </>
+                                            :
+                                            <>
+                                                {
+                                                    frete === 10 || frete === '10'?
+                                                    <>
+                                                        <CaixaMensalF10 />
+                                                    </>
+                                                    :
+                                                    <>
+                                                    {
+                                                        frete === 15 || frete === '15'?
+                                                        <>
+                                                            <CaixaMensalF15 />
+                                                        </>
+                                                        :
+                                                        <CaixaMensalF20 />
+                                                    }
+                                                    </>
+                                                }
+                                            </>
+                                        }
+                                        </>
+                                    }
+                                    </>
+                                            :
+                                            null
+                                        }
+                                        </>
+                                    }
+                                    </>
+                                }
+                                </>
+                                :
+                                <>
+                                    <CheckoutButton onClick={handleConfirmData}>
+                                        CONFIRMAR DADOS E FINALIZAR PEDIDO
+                                    </CheckoutButton>
+                                    <BackButton onClick={() => window.history.back()}>
+                                        VOLTAR
+                                    </BackButton>
+                                </>
+                            }
+                            </>
+                            :
+                            <>
+                            {
+                                confirm ?
+                                <Paypal descricao={`${titulo} x${qnt}`} valor={Number(subTotal) + Number(frete)}/>
+                                :
+                                <>
+                                    <CheckoutButton onClick={handleConfirmData}>
+                                        CONFIRMAR DADOS E FINALIZAR PEDIDO
+                                    </CheckoutButton>
+                                    <BackButton onClick={() => window.history.back()}>
+                                        VOLTAR
+                                    </BackButton>
+                                </>
+                            }
+                            </>
+                    }
 
                     <Aviso>
                         <AvisoTitle>

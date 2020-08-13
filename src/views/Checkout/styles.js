@@ -41,6 +41,10 @@ export const Fatura = styled.div`
     border: 2px solid #00713C;
     padding: 20px;
     margin-bottom: 50px;
+
+    form{
+        width: 100%;
+    }
 `;
 
 export const Title = styled.span`
@@ -124,6 +128,7 @@ export const AvisoTitle = styled.div`
 
 export const CheckoutButton = styled.button`
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
@@ -138,6 +143,11 @@ export const CheckoutButton = styled.button`
     &:hover{
         transition: 0.5s all;
         background-color: #004223;
+    }
+
+    .icon{
+        font-size: 26px;
+        margin-right: 10px;
     }
 `;
 

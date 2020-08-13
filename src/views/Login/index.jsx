@@ -26,7 +26,8 @@ import {
     DividerOr,
     LinkTermos,
     Termos,
-    Back
+    Back,
+    FormRegister
 } from './styles';
 
 // ASSETS
@@ -163,7 +164,7 @@ function Login() {
                         <DividerOr/>
                     </ContainerDivider>
 
-                    <FormLogin onSubmit={handleRegister}>
+                    <FormRegister>
 
                         <LabelLogin>
                             Nome*
@@ -192,10 +193,10 @@ function Login() {
                             <LinkTermos>Termos de uso.</LinkTermos>
                         </Termos>
 
-                        <ButtonSignIn type="submit">
+                        <ButtonSignIn onClick={handleRegister}>
                             Registrar-se
                         </ButtonSignIn>
-                    </FormLogin>
+                    </FormRegister>
                 </SignUp>
           </LoginContainer>
 

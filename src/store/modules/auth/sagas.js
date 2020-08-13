@@ -2,7 +2,6 @@ import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '../../../services/api';
-import history from '../../../services/history';
 
 import { signInSuccess, signFailure } from './actions';
 
@@ -41,7 +40,6 @@ export function setToken({ payload }){
 export function signOut(){
     toast.success('Deslogado com sucesso! Redirecionando...', { position: "bottom-center" });
     setTimeout(function(){
-        history.push('/');
         window.location.reload();
     }, 3000)
 }

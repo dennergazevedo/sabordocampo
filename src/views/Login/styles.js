@@ -124,6 +124,16 @@ export const FormLogin = styled.form`
     margin-top: 0px;
 `;
 
+export const FormRegister = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 20px;
+    margin-top: 0px;
+`;
+
 export const LabelLogin = styled.label`
     display: flex;
     font-size: 12px;

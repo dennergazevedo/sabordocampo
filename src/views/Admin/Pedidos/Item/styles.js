@@ -51,3 +51,70 @@ export const LinkPay = styled.div`
         font-weight: 600;
     }
 `;
+
+export const CancelButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: #FFF;
+    background-color: #E54;
+    padding: 10px;
+    width: 100px;
+    height: auto;
+    font-size: 12px;
+    transition: 0.5s all;
+
+    &:hover{
+        transition: 0.5s all;
+        background-color: #960f00;
+    }
+`;
+
+export const ConfirmButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: #FFF;
+    background-color: #00713C;
+    padding: 10px;
+    width: 100px;
+    height: auto;
+    font-size: 12px;
+    transition: 0.5s all;
+
+    &:hover{
+        transition: 0.5s all;
+        background-color: #004a27;
+    }
+`;
+
+export const Body = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: center;
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+
+    label{
+        font-size: 12px;
+        color: #0009;
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+    select{
+        background-color: #FFF;
+        padding: 5px 5px 5px 10px;
+        border: 1px solid #0003;
+        color: #0009;
+        font-size: 12px;
+        width: 100%;
+        height: 35px;
+        border-radius: 5px;
+    }
+`;

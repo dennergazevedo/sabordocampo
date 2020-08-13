@@ -87,3 +87,58 @@ export const PaginationControl = styled.div`
     padding: 10px;
   }
 `;
+
+export const Search = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin-top: 20px;
+
+    input{
+        background-color: #FFF;
+        padding: 5px 5px 5px 10px;
+        border: 1px solid #0003;
+        color: #0009;
+        font-size: 12px;
+        width: 100%;
+        max-width: 300px;
+        height: 40px;
+        border-radius: 5px 0px 0px 5px;
+    }
+
+    button{
+        background-color: #00713C;
+        color: #FFF;
+        font-size: 16px;
+        height: 40px;
+        width: 40px;
+        border-radius: 0px 5px 5px 0px;
+        transition: 0.5s all;
+
+        &:hover{
+            transition: 0.5s all;
+            background-color: #004a27;
+        }
+    }
+`;
+
+export const CleanFilter = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 20px;
+    width: 300px;
+    background-color: #E54;
+    height: 40px;
+    color: #FFF;
+    transition: 0.5s all;
+
+    &:hover{
+        transition: 0.5s all;
+        background-color: #6b0b00;
+    }
+`;

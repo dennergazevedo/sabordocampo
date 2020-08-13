@@ -27,6 +27,7 @@ import Termos from '../views/Termos';
 import Privacidade from '../views/Privacidade';
 import Trocas from '../views/Trocas';
 import Contato from '../views/Contato';
+import Payment from '../views/Payment';
 
 export default function Routes(){
 
@@ -54,6 +55,7 @@ export default function Routes(){
                 <Route path="/painel/pedidos" exact component={Pedidos} Admin/>
                 <Route path="/painel/clientes" exact component={Clientes} Admin/>
                 <Route path="/finalizar-compra/:id" exact component={Checkout} />
+                <Route path="/pagamento-sucesso" exact component={Payment} />
             </Switch>
         </BrowserRouter>
     );
