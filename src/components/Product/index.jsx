@@ -36,7 +36,6 @@ function Product() {
           12 Ovos
             <Subtitle>(Dúzia)</Subtitle>
         </Title>
-          Ovos de galinhas livres de gaiola com acesso ao campo.
           
           <Link to="/assinatura/1">
             <Button1>
@@ -64,7 +63,6 @@ function Product() {
           30 Ovos
             <Subtitle>(Pente)</Subtitle>
         </Title>
-          Ovos de galinhas livres de gaiola com acesso ao campo.
           
           <Link to="/assinatura/2">
             <Button1>
@@ -91,7 +89,6 @@ function Product() {
           360 Ovos
             <Subtitle>(Caixa)</Subtitle>
         </Title>
-          Ovos de galinhas livres de gaiola com acesso ao campo.
           
           <Link to="/assinatura/3">
             <Button1>

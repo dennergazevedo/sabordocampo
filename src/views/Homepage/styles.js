@@ -52,8 +52,10 @@ export const TextSlider = styled.div`
 
 export const Subtitle = styled.span`
     display: flex;
-    font-size: 18px;
-    color: #FFF9;
+    font-size: 28px;
+    width: 70%;
+    color: #FFF;
+    font-weight: 800;
     margin-bottom: 50px;
     margin-left: 30px;
     cursor: default;
@@ -61,19 +63,19 @@ export const Subtitle = styled.span`
     @media only screen and (max-width: 920px){
         margin-bottom: 20px;
         margin-left: 30px;
-        font-size: 14px;
+        font-size: 24px;
     }
 `;
 
 export const Title = styled.span`
-    font-size: 30px;
-    font-weight: 800;
+    font-size: 20px;
+    font-weight: 600;
     color: #FFF;
     margin-left: 30px;
     cursor: default;
 
     @media only screen and (max-width: 920px){
-        font-size: 20px;
+        font-size: 14px;
     }
 `;
 
@@ -139,8 +141,7 @@ export const ImgPlan = styled.img`
 
 export const ButtonPlan= styled.a`
     display: flex;
-    position: absolute;
-    margin-top: -80px;
+    margin-top: -100px;
     padding: 20px 50px 20px 50px;
     border-radius: 100px;
     background-color: #00713C;
@@ -156,9 +157,9 @@ export const ButtonPlan= styled.a`
     }
 
     @media only screen and (max-width: 920px){
-        padding: 15px 30px 15px 30px;
-        margin-top: -20px;
-        font-size: 16px;
+        padding: 10px 20px 10px 20px;
+        margin-top: -50px;
+        font-size: 12px;
     }
 `;
 

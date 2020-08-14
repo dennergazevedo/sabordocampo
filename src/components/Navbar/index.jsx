@@ -43,9 +43,11 @@ function Navbar() {
                     </ItemText>
                 </Link>
 
-                <ItemText>
-                    Quem somos
-                </ItemText>
+                <Link to="/quem-somos">
+                    <ItemText>
+                        Quem somos
+                    </ItemText>
+                </Link>
 
                 <Link to="/contato">
                     <ItemText>

@@ -126,9 +126,11 @@ function Login() {
                         </LabelLogin>
                         <InputEmail value={password} onChange={e => setPassword(e.target.value)} id="password" type="password" placeholder="********"/>
 
-                        <ForgotPass>
-                            Esqueceu sua senha?
-                        </ForgotPass>
+                        <Link to="/esqueci-minha-senha">
+                            <ForgotPass>
+                                Esqueceu sua senha?
+                            </ForgotPass>
+                        </Link>
 
                         <ButtonSignIn>
                             {

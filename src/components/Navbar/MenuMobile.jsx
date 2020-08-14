@@ -73,10 +73,13 @@ function MenuMobile() {
                                 </ItemMenu>
                             </Link>
                             
-                            <ItemMenu>
-                                <FaAngleRight style={{marginRight: '10px'}}/>
-                                Quem somos
-                            </ItemMenu>
+                            <Link to="/quem-somos">
+                                <ItemMenu>
+                                    <FaAngleRight style={{marginRight: '10px'}}/>
+                                    Quem somos
+                                </ItemMenu>
+                            </Link>
+
                             <Link to="/contato">
                                 <ItemMenu>
                                     <FaAngleRight style={{marginRight: '10px'}}/>

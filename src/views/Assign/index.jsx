@@ -57,6 +57,8 @@ function Assign() {
     async function loadProduct(){
         const response = await api.get(`search_product/${params.id}`);
         setProduto(response.data);
+        const describe = document.getElementById('describe');
+        describe.innerHTML = response.data.descricao;
         setValor(response.data.valor);
         setTotValue(response.data.valor);
         loadImagem(response.data.file_id);
@@ -196,10 +198,7 @@ function Assign() {
                         {produto.titulo}
                     </Title>
 
-                    <Subtitle>
-                        <b>Este pedido inclui:</b>
-                        {produto.descricao}
-                    </Subtitle>
+                    <Subtitle id="describe"/>
 
                     <Options>
                         <Subtitle>

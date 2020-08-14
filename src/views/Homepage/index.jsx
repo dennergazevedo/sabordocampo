@@ -26,6 +26,7 @@ import Product from '../../components/Product';
 // ASSETS
 import fixedslider from '../../assets/img/fixedslider.png';
 import imgplan from '../../assets/img/backgroundhome.png';
+import imgplanmobile from '../../assets/img/backgroundhomemobile.png';
 
 function Homepage() {
 
@@ -48,7 +49,7 @@ function Homepage() {
           }
           <TextSlider>
             <Subtitle>
-              Clube do Ovo Sabor do Campo
+              CLUBE DO OVO SABOR DO CAMPO
             </Subtitle>
             <Title>
               ASSINE E RECEBA
@@ -79,7 +80,12 @@ function Homepage() {
               </ButtonPlan>
             </AboutPlan>
             :
-            null
+            <AboutPlan id="about">
+              <ImgPlan src={imgplanmobile} alt="IMAGEMPLANO" />
+              <ButtonPlan href="#assign">
+                ASSINAR AGORA
+              </ButtonPlan>
+            </AboutPlan>
         }
 
         <ProductList id="assign">
