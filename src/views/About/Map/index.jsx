@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Dimensions from "react-dimensions";
-import { Container } from "../styles";
+import { Container } from "./styles";
 import MapGL from "react-map-gl";
 import PropTypes from "prop-types";
 
@@ -26,7 +26,7 @@ class Map extends Component {
   render() {
     return (
       <MapGL
-        width={"100%"}
+        width={"100vw"}
         height={"350px"}
         {...this.state.viewport}
         mapStyle="mapbox://styles/mapbox/dark-v9"

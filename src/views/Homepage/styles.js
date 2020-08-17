@@ -174,3 +174,25 @@ export const ProductList = styled.div`
     margin-top: 50px;
     margin-bottom: 50px;
 `;
+
+export const Process = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    h2{
+        font-weight: 800;
+        color: #00713C;
+    }
+
+    span{
+        font-size: 14px;
+        margin-top: 20px;
+        color: #0009;
+        text-align: justify;
+    }
+`;

@@ -31,6 +31,7 @@ import Payment from '../views/Payment';
 import ForgotPass from '../views/ForgotPass';
 import ResetPass from '../views/ResetPass';
 import About from '../views/About';
+import Help from '../views/Profile/Help';
 
 export default function Routes(){
 
@@ -62,6 +63,7 @@ export default function Routes(){
                 <Route path="/esqueci-minha-senha" exact component={ForgotPass} />
                 <Route path="/reset-password/:email/:token" exact component={ResetPass} />
                 <Route path="/quem-somos" exact component={About} />
+                <Route path="/preciso-de-ajuda" exact component={Help} isPrivate/>
             </Switch>
         </BrowserRouter>
     );

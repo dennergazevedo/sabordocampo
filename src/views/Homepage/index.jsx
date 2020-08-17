@@ -15,7 +15,8 @@ import {
   AboutPlan,
   ImgPlan,
   ButtonPlan,
-  ProductList
+  ProductList,
+  Process
 } from './styles';
 
 // COMPONENTS
@@ -71,16 +72,24 @@ function Homepage() {
           </TextSlider>
         </FixedSlider>
 
+        <Process >
+          <h2 id="about" >PROCESSO</h2>
+
+          <span>
+            Assim que você faz sua assinatura ou compra de algum produto em nosso site já começamos a nos preparar para você receber tudo fresquinho em casa. Planejamos e separamos nossa produção de acordo com a demanda dos pedidos. Assim evitamos desperdício de produtos e embalagens. Depois nos movimentamos para fazer as entregar no dia e intervalo de horário que você selecionou em nossa em nossa plataforma.
+          </span>
+        </Process>
+
         {
           screen.width > 700 && window.innerWidth > 700 ?
-            <AboutPlan id="about">
+            <AboutPlan>
               <ImgPlan src={imgplan} alt="IMAGEMPLANO" />
               <ButtonPlan href="#assign">
                 ASSINAR AGORA
               </ButtonPlan>
             </AboutPlan>
             :
-            <AboutPlan id="about">
+            <AboutPlan>
               <ImgPlan src={imgplanmobile} alt="IMAGEMPLANO" />
               <ButtonPlan href="#assign">
                 ASSINAR AGORA

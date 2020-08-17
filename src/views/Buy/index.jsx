@@ -66,6 +66,7 @@ function Buy() {
     const [comprimento, setComprimento] = useState(0);
     const [altura, setAltura] = useState(0);
     const [largura, setLargura] = useState(0);
+    const [noFrete, setNoFrete] = useState(false);
 
     async function loadProduct(){
         const response = await api.get(`search_product/${params.id}`);
@@ -131,9 +132,15 @@ function Buy() {
                 altura: parseInt(altura, 10),
                 largura: parseInt(largura, 10)
               })
+              console.log(response.data);
             const taxa = parseFloat(response.data.Valor) * 1.2
-            setFreteCorreios(taxa);
-            console.log(response.data);
+            if(taxa === 0){
+                setNoFrete(true);
+                toast.error('Não foi possível calcular o frete, tente novamente mais tarde', { position: 'bottom-center' });
+            }else{
+                setNoFrete(false);
+                setFreteCorreios(taxa);
+            }
         }catch(err){
             toast.error('Não foi possível localizar o CEP, tente novamente!', { position: 'bottom-center' });
         }
@@ -149,6 +156,7 @@ function Buy() {
     }, [])
 
     useEffect(()=>{
+        setNoFrete(false);
         if(
             bairro === '1' || bairro === '2' || bairro === '4' ||
             bairro === '5' || bairro === '6' || bairro === '8' || 
@@ -313,7 +321,7 @@ function Buy() {
                         <ButtonQnt onClick={handleMais}>+</ButtonQnt>
                     </Quantidade>
 
-                    <Checkout onClick={handleBuy}>
+                    <Checkout disabled={noFrete} onClick={handleBuy}>
                         COMPRAR AGORA
                     </Checkout>
 

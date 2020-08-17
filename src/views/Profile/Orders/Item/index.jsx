@@ -91,7 +91,7 @@ function Item(props) {
                 <PopoverBody style={{padding: '20px', fontSize:'12px'}}>
                     {produto.titulo} x 0{order.qnt}
                     <hr/>
-                    {produto.descricao}
+                    {produto.subtitulo}
                     <hr/>
                     Comprado em {data}
                 </PopoverBody>

@@ -59,8 +59,8 @@ export const Item = styled.div`
 
 export const DivMap = styled.div`
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
-    height: 350px;
+    height: auto;
 `;

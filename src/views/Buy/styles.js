@@ -191,6 +191,11 @@ export const Checkout = styled.button`
     align-items: center;
     margin-bottom: 20px;
     transition: 0.5s all;
+    
+    &:disabled{
+        background-color: #0005;
+        box-shadow: 1px 1px 5px 1px #0003;
+    }
 
     &:hover{
         transition: 0.5s all;

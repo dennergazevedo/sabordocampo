@@ -102,9 +102,11 @@ function Profile() {
                 </Admin>
               </Link>
               :
-              <Help>
-                  PRECISO DE AJUDA
-              </Help>
+              <Link replace to="/preciso-de-ajuda">
+                <Help>
+                    PRECISO DE AJUDA
+                </Help>
+              </Link>
           }
 
           <Exit onClick={handleSignOut}>
