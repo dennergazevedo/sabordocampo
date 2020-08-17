@@ -12,6 +12,7 @@ import {
     InputText,
     Register,
     Back,
+    Frete
 } from './register.js';
 
 // COMPONENTES
@@ -36,6 +37,10 @@ function Produtos() {
     const [subtitulo, setSubtitulo] = useState('');
     const [valor, setValor] = useState(0);
     const [estoque, setEstoque] = useState(0);
+    const [largura, setLargura] = useState(0);
+    const [altura, setAltura] = useState(0);
+    const [peso, setPeso] = useState(0);
+    const [comprimento, setComprimento] = useState(0);
 
     async function handleUpload(e) {
         try{
@@ -63,6 +68,10 @@ function Produtos() {
                         valor,
                         estoque,
                         file_id: imgId,
+                        peso,
+                        comprimento,
+                        altura,
+                        largura
                     })
                     toast.success('Produto Cadastrado com sucesso!', { position: 'bottom-center' });
                     setTimeout(function(){
@@ -120,6 +129,36 @@ function Produtos() {
                     </Label>
                     <InputText type="text" value={descricao} onChange={e => setDescricao(e.target.value)}/>
                 </Item>
+
+                <Frete>
+                    <div>
+                        <label>
+                            COMPRIMENTO (cm):
+                        </label>
+                        <input type="number" value={comprimento} onChange={e => setComprimento(e.target.value)}/>
+                    </div>
+
+                    <div>
+                        <label>
+                            ALTURA (cm):
+                        </label>
+                        <input type="number" value={altura} onChange={e => setAltura(e.target.value)}/>
+                    </div>
+
+                    <div>
+                        <label>
+                            LARGURA (cm):
+                        </label>
+                        <input type="number" value={largura} onChange={e => setLargura(e.target.value)}/>
+                    </div>
+
+                    <div>
+                        <label>
+                            PESO (gramas):
+                        </label>
+                        <input type="number" value={peso} onChange={e => setPeso(e.target.value)}/>
+                    </div>
+                </Frete>
 
                 <Register onClick={handleRegister}>
                     CADASTRAR PRODUTO

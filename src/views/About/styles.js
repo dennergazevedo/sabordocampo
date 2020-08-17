@@ -56,3 +56,11 @@ export const Item = styled.div`
         width: 100%;
     }
 `;
+
+export const DivMap = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100vw;
+    height: 350px;
+`;

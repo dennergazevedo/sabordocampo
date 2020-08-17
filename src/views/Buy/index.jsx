@@ -18,7 +18,8 @@ import {
     Quantidade,
     ButtonQnt,
     InputQnt,
-    Checkout
+    Checkout,
+    Correios
 } from './styles';
 
 // COMPONENTS
@@ -37,6 +38,14 @@ import { toast } from 'react-toastify';
 // STORE
 import { useSelector } from 'react-redux';
 
+// ICONS
+import {
+    FaSearch
+} from 'react-icons/fa';
+
+// COMPONENTS
+import InputMask from 'react-input-mask';
+
 function Buy() {
 
     const params = useParams();
@@ -49,16 +58,26 @@ function Buy() {
     const [valor, setValor] = useState(0);
     const [totValue, setTotValue] = useState(valor);
     const [qnt, setQnt] = useState(1);
-    const [bairro, setBairro] = useState(1);
+    const [bairro, setBairro] = useState('1');
     const [imagem, setImagem] = useState(loading);
+    const [cep, setCep] = useState('');
+    const [freteCorreios, setFreteCorreios] = useState(10);
+    const [peso, setPeso] = useState(0);
+    const [comprimento, setComprimento] = useState(0);
+    const [altura, setAltura] = useState(0);
+    const [largura, setLargura] = useState(0);
 
     async function loadProduct(){
         const response = await api.get(`search_product/${params.id}`);
         setProduto(response.data);
+        setPeso(response.data.peso);
+        setComprimento(response.data.comprimento);
+        setAltura(response.data.altura);
+        setLargura(response.data.largura);
         const describe = document.getElementById('describe');
         describe.innerHTML = response.data.descricao;
         setValor(response.data.valor);
-        setTotValue(response.data.valor);
+        setTotValue(Number(response.data.valor) + Number(freteCorreios));
         loadImagem(response.data.file_id);
     }
 
@@ -100,14 +119,65 @@ function Buy() {
         setTotValue(valor * quant);
     }
 
+    async function handleFreteCorreios(){
+        try{
+            const pesoEnvio = peso / 1000;
+            let intCep = cep.replace('.', '');
+            intCep = intCep.replace('-', '');
+            const response = await api.post('frete_correios', {
+                cep: intCep,
+                peso: parseInt(pesoEnvio, 10),
+                comprimento: parseInt(comprimento, 10),
+                altura: parseInt(altura, 10),
+                largura: parseInt(largura, 10)
+              })
+            const taxa = parseFloat(response.data.Valor) * 1.2
+            setFreteCorreios(taxa);
+            console.log(response.data);
+        }catch(err){
+            toast.error('Não foi possível localizar o CEP, tente novamente!', { position: 'bottom-center' });
+        }
+    }
+
     useEffect(()=>{
-        setTotValue(valor * qnt);
+        setTotValue(Number(valor * qnt) + Number(freteCorreios));
     }, [qnt])
 
     useEffect(()=>{
         window.location.href="#index";
         loadProduct();
     }, [])
+
+    useEffect(()=>{
+        if(
+            bairro === '1' || bairro === '2' || bairro === '4' ||
+            bairro === '5' || bairro === '6' || bairro === '8' || 
+            bairro === '12' || bairro === '14'|| bairro === '15' || 
+            bairro === '16' || bairro === '17' ||bairro === '18' || 
+            bairro === '18' || bairro === '19' ||bairro === '20' || 
+            bairro === '21' || bairro === '22' ||bairro === '23' || 
+            bairro === '24' || bairro === '25' ||bairro === '27' || 
+            bairro === '32' || bairro === '33' ||bairro === '34' || 
+            bairro === '35' || bairro === '38' ||bairro === '39' || 
+            bairro === '40' || bairro === '41' ||bairro === '45'                
+            ){
+                setFreteCorreios(10)
+            }else if (
+                bairro === '3' || bairro === '7' || bairro === '10' ||
+                bairro === '11' || bairro === '26' || bairro === '28' ||
+                bairro === '29' || bairro === '30' || bairro === '31' ||
+                bairro === '37' || bairro === '42' || bairro === '43' ||
+                bairro === '44' || bairro === '47'
+            ){
+                setFreteCorreios(15)
+            }else {
+                setFreteCorreios(20)
+            }
+    }, [bairro])
+
+    useEffect(()=>{
+        setTotValue(Number(valor * qnt) + Number(freteCorreios));
+    }, [freteCorreios])
 
   return (
       <Container>
@@ -206,6 +276,28 @@ function Buy() {
                             </span>
 
                         </Form>
+
+                        <Correios>
+                            <span>Ou digite o CEP para entrega em outras cidades:</span>
+                            <div>
+                                <InputMask
+                                    mask="99.999-999"
+                                    onChange={e => setCep(e.target.value)}
+                                    value={cep}
+                                    className="inputMask"
+                                    placeholder="CEP"
+                                />
+                                <button onClick={handleFreteCorreios}><FaSearch /></button>
+                            </div>
+                            {
+                                freteCorreios ?
+                                <span>
+                                    Valor do frete: R${freteCorreios.toFixed(2)}
+                                </span>
+                                :
+                                null
+                            }
+                        </Correios>
                     </Options>
 
                 </Right>

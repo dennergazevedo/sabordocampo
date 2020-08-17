@@ -104,7 +104,6 @@ export const Input = styled.input`
     color: #0009;
     font-size: 12px;
     padding: 5px 5px 5px 20px;
-    margin-top: 5px;
 `;
 
 export const InputText = styled.textarea`
@@ -153,5 +152,40 @@ export const Back = styled.button`
         transition: 0.5s all;
         background-color: #E54;
         color: #FFF;
+    }
+`;
+
+export const Frete = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 10px;
+    }
+
+    label{
+        font-size: 12px;
+        color: #0009;
+        align-self: flex-start;
+        margin-top: 10px;
+    }
+
+    input{
+        display: flex;
+        width: 100px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #F5F5F5;
+        border: 1px solid #909090;
+        color: #0009;
+        font-size: 12px;
+        padding: 5px 5px 5px 20px;
     }
 `;

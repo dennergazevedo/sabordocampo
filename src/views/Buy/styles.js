@@ -197,3 +197,44 @@ export const Checkout = styled.button`
         box-shadow: 1px 1px 5px 1px #00713C;
     }
 `;
+
+export const Correios = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    span{
+        font-size: 12px;
+        color: #0009;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    input{
+        background-color: #FFF;
+        height: 40px;
+        border-radius: 5px 0px 0px 5px;
+        padding: 0px 0px 0px 10px;
+        color: #0009;
+        font-size: 12px;
+    }
+
+    button{
+        width: 40px;
+        height: 40px;
+        background-color: #00713C;
+        color: #FFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+`;

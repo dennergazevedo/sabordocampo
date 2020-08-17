@@ -7,11 +7,13 @@ import {
     Banner,
     BodyContainer,
     Item,
+    DivMap
 } from './styles';
 
 // COMPONENTS
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import Map from './Map';
 
 // ASSETS
 import aboutbanner from '../../assets/img/aboutbanner.png';
@@ -53,6 +55,11 @@ function About() {
                     </span>
                 </Item>
             </BodyContainer>
+
+            <DivMap>
+                <Map />
+            </DivMap>
+
           </Body>
 
           <Footer />
