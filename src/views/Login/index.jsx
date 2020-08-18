@@ -96,8 +96,26 @@ function Login() {
         }
     }
 
-    const responseFacebook = (response) => {
-        console.log(response);
+    async function handleLoginFacebook(e){
+        try{
+            await api.post('register_user',{
+                nome: e.name,
+                email: e.email,
+                password: e.userID,
+            })
+            dispatch(signInRequest(e.email, e.userID));
+        }catch(err){
+            try{
+                dispatch(signInRequest(e.email, e.userID));
+            }catch(err){
+                toast.error('Falha ao logar com o Facebook!', { position: 'bottom-center' });
+                setTimeout(function(){}, 3000)
+            }
+        }
+    }
+
+    const responseFacebook = (response) =>{
+        handleLoginFacebook(response);
     }
 
   return (
@@ -111,7 +129,7 @@ function Login() {
 
                     <FacebookLogin
                         appId="840985653099721"
-                        autoLoad={true}
+                        autoLoad={false}
                         size="medium"
                         icon={<AiFillFacebook style={{fontSize:'30px', marginRight:'10px'}}/>}
                         fields="name,email"
@@ -166,7 +184,7 @@ function Login() {
 
                     <FacebookLogin
                         appId="840985653099721"
-                        autoLoad={true}
+                        autoLoad={false}
                         size="medium"
                         icon={<AiFillFacebook style={{fontSize:'30px', marginRight:'10px'}}/>}
                         fields="name,email"
