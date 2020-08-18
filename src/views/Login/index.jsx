@@ -6,6 +6,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import FacebookLogin from 'react-facebook-login';
+
 // STYLED COMPONENTS
 import { 
     Container,
@@ -95,6 +97,10 @@ function Login() {
         }
     }
 
+    const responseFacebook = (response) => {
+        console.log(response);
+    }
+
   return (
       <Container>
           <Logomarca src={logo} alt="LOGOMARCA"/>
@@ -104,10 +110,14 @@ function Login() {
                         ENTRAR
                     </Title>
 
-                    <FacebookButton>
-                        <AiFillFacebook style={{fontSize:'30px'}}/>
-                        Entrar com Facebook
-                    </FacebookButton>
+                    <FacebookLogin
+                        appId="840985653099721"
+                        autoLoad={true}
+                        size="medium"
+                        icon={<AiFillFacebook style={{fontSize:'30px', marginRight:'10px'}}/>}
+                        fields="name,email"
+                        textButton="Entrar com Facebook"
+                        callback={responseFacebook} />
 
                     <ContainerDivider>
                         <DividerOr/>
@@ -155,10 +165,14 @@ function Login() {
                         CADASTRAR-SE
                     </Title>
 
-                    <FacebookButton>
-                        <AiFillFacebook style={{fontSize:'30px'}}/>
-                        Cadastrar com Facebook
-                    </FacebookButton>
+                    <FacebookLogin
+                        appId="840985653099721"
+                        autoLoad={true}
+                        size="medium"
+                        icon={<AiFillFacebook style={{fontSize:'30px', marginRight:'10px'}}/>}
+                        fields="name,email"
+                        textButton="Cadastrar com Facebook"
+                        callback={responseFacebook} />
 
                     <ContainerDivider>
                         <DividerOr/>

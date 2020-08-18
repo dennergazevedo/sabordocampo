@@ -209,6 +209,7 @@ export const FacebookButton = styled.button`
     align-items: center;
     font-size: 14px;
     margin: 10px;
+    text-decoration: none;
 `;
 
 export const LinkTermos = styled.span`
