@@ -23,7 +23,6 @@ import {
     InputEmail,
     ForgotPass,
     ButtonSignIn,
-    FacebookButton,
     ContainerDivider,
     DividerOr,
     LinkTermos,
