@@ -23,7 +23,7 @@ function Privacidade() {
                 </Title>
 
                 <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Nós prezamos a sua privacidade e cuidamos da sua segurança! Por isso, nosso sistema de compras foi pensado para dar a você o máximo de proteção, utilizando as tecnologias e procedimentos eficazes em termos de segurança na Internet. Entenda como funciona:
                 </span>
 
                 <Subtitle>
@@ -31,7 +31,7 @@ function Privacidade() {
                 </Subtitle>
 
                 <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Todas as informações fornecidas por você a Sabor do Campo são tratadas sob a mais absoluta confidencialidade. Ou seja, mais ninguém tem acesso. Seus dados pessoais serão utilizados apenas para efetivar suas compras e para que possamos enviar a você as novidades do site. No momento do cadastro, você escolhe se quer ou não receber esse tipo de e-mail. Informações a seu respeito não serão repassadas a terceiros.
                 </span>
 
                 <Subtitle>
@@ -39,7 +39,7 @@ function Privacidade() {
                 </Subtitle>
 
                 <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Todos os dados são processados em nossos computadores, sem que haja, em nenhum momento, intervenção de nossos funcionários. Dessa forma, eliminamos o risco de vazamento de informações ou eventuais falhas humanas.
                 </span>
 
                 <Subtitle>
@@ -47,7 +47,7 @@ function Privacidade() {
                 </Subtitle>
 
                 <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Para reforçar sua segurança, dispomos de um servidor seguro certificado pela Let’s Encrypt – um dos mais respeitados certificados de sistemas de segurança do mundo. 
                 </span>
 
                 <Subtitle>
@@ -55,7 +55,7 @@ function Privacidade() {
                 </Subtitle>
 
                 <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Todos os dados enviados por você trafegam criptografados (codificados). Isso significa que, mesmo que consigam interceptá-las as, pessoas não conseguirão ler as suas informações.
                 </span>
 
                 <Subtitle>
@@ -63,7 +63,7 @@ function Privacidade() {
                 </Subtitle>
 
                 <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Toda transação realizada por cartão de crédito é transacionada pelo PayPal e tem toda segurança necessária para que seus dados nunca sejam revelados.
                 </span>
 
                 <Subtitle>
@@ -71,7 +71,7 @@ function Privacidade() {
                 </Subtitle>
 
                 <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    O site Sabor do Campo está hospedado em um Data Center especializado em hospedagem de comércio eletrônico, projetado para operar dentro de padrões mundiais de qualidade, garantindo total segurança, conectividade de alta performance, disponibilidade, monitoramento, redundância de links, e escalabilidade.
                 </span>
             </Body>
 

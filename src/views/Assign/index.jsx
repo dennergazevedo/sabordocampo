@@ -48,11 +48,12 @@ function Assign() {
 
     const [produto, setProduto] = useState('');
     const [valor, setValor] = useState(0);
-    const [totValue, setTotValue] = useState(valor);
     const [qnt, setQnt] = useState(1);
     const [bairro, setBairro] = useState('1');
     const [imagem, setImagem] = useState(loading);
     const [periodicidade, setPeriodicidade] = useState(7);
+    const [frete, setFrete] = useState(10);
+    const [totValue, setTotValue] = useState(valor + frete);
 
     async function loadProduct(){
         const response = await api.get(`search_product/${params.id}`);
@@ -60,7 +61,7 @@ function Assign() {
         const describe = document.getElementById('describe');
         describe.innerHTML = response.data.descricao;
         setValor(response.data.valor);
-        setTotValue(response.data.valor);
+        setTotValue(response.data.valor + frete);
         loadImagem(response.data.file_id);
     }
 
@@ -71,31 +72,6 @@ function Assign() {
     
     async function handleAssign(){
         try{
-            let frete = 0
-            if(
-                bairro === '1' || bairro === '2' || bairro === '4' ||
-                bairro === '5' || bairro === '6' || bairro === '8' || 
-                bairro === '12' || bairro === '14'|| bairro === '15' || 
-                bairro === '16' || bairro === '17' ||bairro === '18' || 
-                bairro === '18' || bairro === '19' ||bairro === '20' || 
-                bairro === '21' || bairro === '22' ||bairro === '23' || 
-                bairro === '24' || bairro === '25' ||bairro === '27' || 
-                bairro === '32' || bairro === '33' ||bairro === '34' || 
-                bairro === '35' || bairro === '38' ||bairro === '39' || 
-                bairro === '40' || bairro === '41' ||bairro === '45'                
-                ){
-                    frete = 10
-                }else if (
-                    bairro === '3' || bairro === '7' || bairro === '10' ||
-                    bairro === '11' || bairro === '26' || bairro === '28' ||
-                    bairro === '29' || bairro === '30' || bairro === '31' ||
-                    bairro === '37' || bairro === '42' || bairro === '43' ||
-                    bairro === '44' || bairro === '47'
-                ){
-                    frete = 15
-                }else {
-                    frete = 20
-                }
             const response = await api.post('register_order', {
                 bairro,
                 qnt,
@@ -175,13 +151,40 @@ function Assign() {
     }
 
     useEffect(()=>{
-        setTotValue(valor * qnt);
+        setTotValue(Number(valor * qnt) + Number(frete));
     }, [qnt])
 
     useEffect(()=>{
         window.location.href="#index";
         loadProduct();
     }, [])
+
+    useEffect(()=>{
+        if(
+            bairro === '1' || bairro === '2' || bairro === '4' ||
+            bairro === '5' || bairro === '6' || bairro === '8' || 
+            bairro === '12' || bairro === '14'|| bairro === '15' || 
+            bairro === '16' || bairro === '17' ||bairro === '18' || 
+            bairro === '18' || bairro === '19' ||bairro === '20' || 
+            bairro === '21' || bairro === '22' ||bairro === '23' || 
+            bairro === '24' || bairro === '25' ||bairro === '27' || 
+            bairro === '32' || bairro === '33' ||bairro === '34' || 
+            bairro === '35' || bairro === '38' ||bairro === '39' || 
+            bairro === '40' || bairro === '41' ||bairro === '45'                
+            ){
+                setFrete(10);
+            }else if (
+                bairro === '3' || bairro === '7' || bairro === '10' ||
+                bairro === '11' || bairro === '26' || bairro === '28' ||
+                bairro === '29' || bairro === '30' || bairro === '31' ||
+                bairro === '37' || bairro === '42' || bairro === '43' ||
+                bairro === '44' || bairro === '47'
+            ){
+                setFrete(15)
+            }else {
+                setFrete(20)
+            }
+    }, [bairro])
 
   return (
       <Container>

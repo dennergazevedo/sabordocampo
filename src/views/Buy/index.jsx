@@ -46,6 +46,9 @@ import {
 // COMPONENTS
 import InputMask from 'react-input-mask';
 
+// CEP PROMISE
+const cepPromise = require('cep-promise')
+
 function Buy() {
 
     const params = useParams();
@@ -67,6 +70,10 @@ function Buy() {
     const [altura, setAltura] = useState(0);
     const [largura, setLargura] = useState(0);
     const [noFrete, setNoFrete] = useState(false);
+    const [logradouro, setLogradouro] = useState(null);
+    const [estado, setEstado] = useState(null);
+    const [cidade, setCidade] = useState(null);
+    const [addr, setAddr] = useState(null);
 
     async function loadProduct(){
         const response = await api.get(`search_product/${params.id}`);
@@ -93,9 +100,11 @@ function Buy() {
                 bairro,
                 qnt,
                 subtotal: totValue,
+                frete: freteCorreios,
                 user_id: profile.id,
                 product_id: params.id,
                 pagamento: "Aguardando pagamento",
+                address_id: addr
             })
             toast.info('Finalizando pedido...', { position: 'bottom-center' });
             setTimeout(function(){
@@ -132,13 +141,27 @@ function Buy() {
                 altura: parseInt(altura, 10),
                 largura: parseInt(largura, 10)
               })
-              console.log(response.data);
+            console.log(response.data);
             const taxa = parseFloat(response.data.Valor) * 1.2
+
             if(taxa === 0){
                 setNoFrete(true);
                 toast.error('Não foi possível calcular o frete, tente novamente mais tarde', { position: 'bottom-center' });
             }else{
+                let aux = await cepPromise(intCep).catch(console.log())
+                setLogradouro(aux.street)
+                setEstado(aux.state)
+                setBairro(aux.neighborhood)
+                setCidade(aux.city)
                 setNoFrete(false);
+                const addr = await api.post('/register_address',{
+                    cep,
+                    logradouro,
+                    bairro,
+                    cidade,
+                    estado,
+                })
+                setAddr(addr.data);
                 setFreteCorreios(taxa);
             }
         }catch(err){

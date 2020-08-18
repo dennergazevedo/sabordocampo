@@ -14,7 +14,7 @@ export const Body = styled.div`
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 150px;
 `;
 
