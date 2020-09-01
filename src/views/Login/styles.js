@@ -212,11 +212,12 @@ export const FacebookButton = styled.button`
     text-decoration: none;
 `;
 
-export const LinkTermos = styled.span`
+export const LinkTermos = styled.a`
     font-weight: 600;
     cursor: pointer;
     font-size: 12px;
     transition: 0.5s all;
+    text-decoration: none;
 
     &:hover{
         transition: 0.5s all;

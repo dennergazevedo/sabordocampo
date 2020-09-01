@@ -223,7 +223,7 @@ function Login() {
                         <Termos>
                             <input value={termos} onChange={e => setTermos(!termos)} type="checkbox" id="termos" style={{marginRight:'5px'}}/>
                                 Li e concordo com os &nbsp;
-                            <LinkTermos>Termos de uso.</LinkTermos>
+                            <LinkTermos href="/termos-de-uso">Termos de uso.</LinkTermos>
                         </Termos>
 
                         <ButtonSignIn onClick={handleRegister}>
