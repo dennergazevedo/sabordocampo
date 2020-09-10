@@ -65,6 +65,9 @@ import { toast } from 'react-toastify';
 // STORE
 import { useSelector } from 'react-redux';
 
+// CEP PROMISE
+const cepPromise = require('cep-promise');
+
 function Checkout() {
 
     const params = useParams();
@@ -73,7 +76,7 @@ function Checkout() {
     const [profile] = useState(profileRedux);
     const [document, setDocument] = useState(null);
     const [pessoa, setPessoa] = useState('1');
-    const [bairro, setBairro] = useState(1);
+    const [bairro, setBairro] = useState(0);
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [email, setEmail] = useState('');
@@ -90,16 +93,30 @@ function Checkout() {
     const [bairroCep, setBairroCep] = useState(null);
     const [cidade, setCidade] = useState('João Monlevade');
     const [estado, setEstado] = useState('Minas Gerais')
+    const [bairroEntrega, setBairroEntrega] = useState('Outro');
 
     async function loadInfo(){
         const response = await api.get(`search_order/${params.id}`)
         loadUser(response.data.user_id);
         if(response.data.address_id){
             const addr = await api.get(`search_address/${response.data.address_id}`)
-            setCidade(addr.data.cidade);
-            setBairroCep(addr.data.bairro);
-            setLogradouro(addr.data.logradouro);
-            setEstado(addr.data.estado);
+            console.log(addr);
+            if(addr.data.cep){
+                const cepend = addr.data.cep;
+                let intCep = cepend.replace('.', '');
+                intCep = intCep.replace('-', '');
+                let aux = await cepPromise(intCep).catch(console.log())
+                setLogradouro(aux.street)
+                setEstado(aux.state)
+                setBairro(0)
+                setBairroEntrega(aux.neighborhood)
+                setCidade(aux.city)
+            } else {
+                setCidade(addr.data.cidade);
+                setBairroCep(addr.data.bairro);
+                setLogradouro(addr.data.logradouro);
+                setEstado(addr.data.estado);
+            }
         }
         loadProduto(response.data.product_id);
         setQnt(response.data.qnt);
@@ -306,6 +323,7 @@ function Checkout() {
                                     <option /* R$19,00 */ value={46}>Vera Cruz</option>
                                     <option /* R$11,00 */ value={47}>Vila Tanque</option>
                                     <option /* R$20,00 */ value={48}>Zona Rural</option>
+                                    <option value={0}>{bairroEntrega}</option>
                                 </select>
                             }
                         </InputDiv>
