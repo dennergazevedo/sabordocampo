@@ -335,7 +335,7 @@ function Buy() {
 
                 <Options2>
                     <Valor>
-                        Total Final: <span>R${totValue.toFixed(2)}</span> / por ciclo
+                        Total Final: <span>R${totValue.toFixed(2)}</span>
                     </Valor>
 
                     <Quantidade>
