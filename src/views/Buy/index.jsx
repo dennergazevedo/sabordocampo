@@ -131,17 +131,16 @@ function Buy() {
 
     async function handleFreteCorreios(){
         try{
-            const pesoEnvio = peso / 1000;
+            const pesoEnvio = peso / 100;
             let intCep = cep.replace('.', '');
             intCep = intCep.replace('-', '');
-            const response = await api.post('frete_correios', {
+            const response = await api.post('/frete_correios', {
                 cep: intCep,
                 peso: parseInt(pesoEnvio, 10),
                 comprimento: parseInt(comprimento, 10),
                 altura: parseInt(altura, 10),
                 largura: parseInt(largura, 10)
               })
-            console.log(response.data);
             const taxa = parseFloat(response.data.Valor) * 1.2
 
             if(taxa === 0){
